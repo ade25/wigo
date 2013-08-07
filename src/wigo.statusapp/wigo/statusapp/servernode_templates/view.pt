@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="wigo.statusapp">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+  <div class="workspace-window">
+    <div class="workspace-window-header">
+      <h2 tal:content="context/Title">Node name</h2>
+    </div>
+    <div class="workspace-window-subheader">
+      <h3 tal:content="context/Description">Node description</h3>
+    </div>
+    <div class="workspace-window-body">
+      <p class="lead">
+        The actual content panel filled with context specific information
+      </p>
+      <div class="row"
+         tal:define="details view/server_details">
+        <div class="col col-lg-3">
+          <div class="infoboxes">
+            <div class="infobox">
+              <h2 tal:content="details/server" />
+              <h6 tal:content="details/servername" />
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9">
+          <table class="table table-condensed">
+            <tbody>
+              <tr tal:repeat="site details/sites">
+                <th><span tal:replace="site/title" /></th>
+                <td class="text-left"
+                  tal:define="url site/url">
+                  <a href="#" tal:content="url"
+                    tal:attributes="href python:'http://' + url" />
+                </td>
+                <td class="text-muted text-right"
+                  tal:content="site/port" />
+                <td class="text-muted" tal:content="site/type" />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

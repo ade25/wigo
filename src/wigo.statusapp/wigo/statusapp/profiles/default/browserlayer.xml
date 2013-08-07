@@ -1,0 +1,6 @@
+<layers>
+  <layer
+    name="wigo.statusapp.layer"
+    interface="wigo.statusapp.interfaces.IStatusApp"
+  />
+</layers>

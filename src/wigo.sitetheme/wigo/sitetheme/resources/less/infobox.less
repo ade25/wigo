@@ -1,0 +1,57 @@
+// Infoboxes for system status
+// ---------------------------
+
+.infoboxes {
+  text-align: center;
+  .infobox {
+    background-color: #eeeeee;
+    color: #555555;
+    padding: 10px;
+    //border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    h2 {
+      font-weight: 1;
+    }
+    h6 {
+      margin-top: -10px;
+    }
+  }
+  .infobox-warning,
+  .infobox-important {
+    background-color: lighten(@state-danger-text, 5%);
+    color: #FFF;
+  }
+  .infobox-success {
+    background-color: @app-dark;
+    color: #FFF;
+  }
+  .infobox-danger {
+    background-color: @app-coral;
+    color: #FFF;
+  }
+  .infobox-info {
+    background-color: @app-darker;
+    color: #FFF;
+  }
+  .infobox-info2 {
+    background-color: @app-darkest;
+    color: #FFF;
+  }
+  .infobox-primary {
+    background-color: @app-one;
+    color: #FFF;
+  }
+  .infobox-purple {
+    background-color: @app-blue;
+    color: #FFF;
+  }
+  .infobox-inverse {
+    background-color: @app-two;
+    color: #FFF;
+  }
+  .infobox-plain {
+    background-color: #fff;
+    color: @app-blue;
+  }
+}

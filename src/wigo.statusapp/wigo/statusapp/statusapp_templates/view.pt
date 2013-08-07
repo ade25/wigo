@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="wigo.statusapp">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+  <div class="workspace-window">
+    <div class="workspace-window-header">
+      <h2 tal:content="context/Title">Workspace Body</h2>
+    </div>
+    <div class="workspace-window-subheader">
+      <h3 tal:content="context/Description">Info Workspace or context actions</h3>
+    </div>
+    <div class="workspace-window-body">
+      <p class="lead">
+        The actual content panel filled with context specific information
+      </p>
+      <div class="well">
+        <h4>Fill dynamic content here</h4>
+      </div>
+      <p>These are the available application colors</p>
+      <div class="row stats">
+        <div class="col col-lg-3 stat">
+          <h2>Application</h2>
+          <h6>color code</h6>
+        </div>
+        <div class="col col-lg-3 stat success">
+          <h2>Application</h2>
+          <h6>color code</h6>
+        </div>
+        <div class="col col-lg-3 stat info2">
+          <h2>Application</h2>
+          <h6>color code</h6>
+        </div>
+        <div class="col col-lg-3 stat danger">
+          <h2>Application</h2>
+          <h6>color code</h6>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat purple">
+          <h2>Application</h2>
+          <h6>color code</h6>
+        </div>
+      </div>
+      <p class="text-muted">
+        <strong>Note:</strong>
+        These colors should eventually be adjusted to be retina ready
+      </p>
+    </div>
+  </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
