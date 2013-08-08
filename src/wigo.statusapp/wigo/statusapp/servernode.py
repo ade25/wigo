@@ -21,6 +21,7 @@ class IServerNode(model.Schema, IImageScaleTraversable):
     """
     server = schema.TextLine(
         title=_(u"Server Name"),
+        description=_(u"Enter a fully qualified servername"),
         required=True
     )
 
