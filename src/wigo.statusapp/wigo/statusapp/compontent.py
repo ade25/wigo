@@ -21,6 +21,14 @@ class ICompontent(form.Schema, IImageScaleTraversable):
     """
     A collection of services and associated server nodes
     """
+    status = schema.Choice(
+        title=_(u"Component Status"),
+        description=_(u"Switch component status to signal outages on the "
+                      u"public status page."),
+        vocabulary=u"wigo.statusapp.ComponentStatusVocabulary",
+        default='operational',
+        required=True,
+    )
 
 
 class Compontent(Container):
