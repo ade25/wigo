@@ -8,6 +8,9 @@
     <!-- wigo to add minimal theme template for the
          tiles editiong overlays -->
     <!--<theme href="minimal.html" if-path="@@edit-tile" />-->
+
+    <theme href="workspace.html" css:if-content="body.section-ws" />
+    <theme href="workspace.html" css:if-content="body.section-sqa" /> 
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
@@ -73,6 +76,17 @@
         <!-- Document Content -->
         <replace css:content-children="#content" 
             css:theme-children="#content" />
+
+        <rules css:if-content="body.section-ws">
+            <replace css:content-children="#content" 
+                css:theme-children="#ws-content" />
+        </rules>
+
+        <rules css:if-content="body.section-sqa">
+            <replace css:content-children="#content" 
+                css:theme-children="#ws-content" />
+        </rules>
+
         
         <before css:content=".portalMessage" css:theme=".workspace" />
         <replace css:content-children="#viewlet-below-content"

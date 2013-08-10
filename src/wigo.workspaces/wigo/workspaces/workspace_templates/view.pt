@@ -9,19 +9,20 @@
 
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
-    <div class="workspace-window">
-        <div class="workspace-window-header">
-          <h2 tal:content="context/Title">Workspace Body</h2>
-        </div>
-        <div class="workspace-window-subheader">
-          <h3 tal:content="context/Description">Info Workspace or context actions</h3>
-        </div>
-        <div class="workspace-window-body">
-            <p class="lead">
-                The actual content panel filled with context specific information
-            </p>
-        </div>
+
+    <div class="ws-section" id="getting-started">
+      <div class="ws-section-header">
+        <h1>Workspace <small tal:content="context/Title">John Doe</small></h1>
+      </div>
+      <p class="lead"
+        tal:condition="context/Description"
+        tal:content="context/Description">
+        Verwenden Sie die Navigation auf der linken Seite, um zu den einzelnen
+        Komponenten zu gelangen.
+      </p>
     </div>
+    <hr>
+    
 
   </metal:content-core>
 </metal:main>

@@ -6844,6 +6844,101 @@ h6 {
   padding: 20px;
   background: #fff;
 }
+.sqa-workspace {
+  padding-top: 0;
+}
+.ws-content {
+  padding: 50px 20px 20px 280px;
+}
+.ws-link-top {
+  margin-right: 20px;
+  padding: 7px 15px;
+  font-weight: 500;
+  color: #999;
+  background-color: #eee;
+  border-radius: 4px;
+}
+.ws-sidebar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  overflow-y: scroll;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f5f5f5;
+  box-shadow: inset -1px 0 0 #e5e5e5;
+}
+.ws-sidebar-heading {
+  margin: 0 0 25px;
+}
+.ws-sidebar-heading a {
+  display: block;
+  padding: 15px 25px;
+  color: #555555;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 1px 0 #fff;
+}
+.ws-sidebar-heading a:hover {
+  text-decoration: none;
+}
+.ws-sidebar-block {
+  padding: 0px 25px;
+  margin-bottom: 20px;
+  color: #666666;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 1px 0 #fff;
+}
+/* Nav: first level */
+.ws-sidebar > .nav {
+  margin: 0 0 25px 0;
+}
+.ws-sidebar .nav > li > a {
+  display: block;
+  color: #666;
+  padding: 4px 25px;
+}
+.ws-sidebar .nav > li > a:hover,
+.ws-sidebar .nav > li > a:focus {
+  text-decoration: none;
+  border-right: 1px solid #d5d5d5;
+}
+.ws-sidebar .nav > .active > a,
+.ws-sidebar .nav > .active:hover > a,
+.ws-sidebar .nav > .active:focus > a {
+  font-weight: 500;
+  color: #b94a48;
+  background-color: transparent;
+  border-right: 1px solid #b94a48;
+}
+/* Nav: second level (shown on .active) */
+.bs-docs-sidebar .nav .nav {
+  display: none;
+  margin-bottom: 5px;
+}
+.bs-docs-sidebar .nav > .active > ul {
+  display: block;
+}
+.bs-docs-sidebar .nav .nav > li > a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 40px;
+  font-size: 90%;
+}
+/* Section headings for groups of links */
+.bs-docs-sidenav > li > .nav-header {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+.bs-docs-sidenav > .active > .nav-header,
+.bs-docs-sidenav > .active > .nav-header:hover {
+  color: #333;
+  border-color: #333;
+}
 .infoboxes {
   text-align: center;
 }
