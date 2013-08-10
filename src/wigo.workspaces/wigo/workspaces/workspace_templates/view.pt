@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="wigo.workspaces">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+    <div class="workspace-window">
+        <div class="workspace-window-header">
+          <h2 tal:content="context/Title">Workspace Body</h2>
+        </div>
+        <div class="workspace-window-subheader">
+          <h3 tal:content="context/Description">Info Workspace or context actions</h3>
+        </div>
+        <div class="workspace-window-body">
+            <p class="lead">
+                The actual content panel filled with context specific information
+            </p>
+        </div>
+    </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

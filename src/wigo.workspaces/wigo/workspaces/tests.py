@@ -52,6 +52,22 @@ def test_suite():
 
         # -*- extra stuff goes here -*-
 
+        # Integration tests for Workspace
+        ztc.ZopeDocFileSuite(
+            'Workspace.txt',
+            package='wigo.workspaces',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
+        # Integration tests for WorkspaceFolder
+        ztc.ZopeDocFileSuite(
+            'WorkspaceFolder.txt',
+            package='wigo.workspaces',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
         ])
 
 if __name__ == '__main__':
