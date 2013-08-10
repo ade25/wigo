@@ -6896,6 +6896,7 @@ h6 {
 .infoboxes .infobox-plain {
   background-color: #fff;
   color: #4581ab;
+  border: 1px solid #eeeeee;
 }
 .sqa {
   background: #fff;

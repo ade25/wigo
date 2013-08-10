@@ -21,38 +21,17 @@
       <p class="lead">
         The actual content panel filled with context specific information
       </p>
-      <div class="well">
-        <h4>Fill dynamic content here</h4>
-      </div>
-      <p>These are the available application colors</p>
-      <div class="row stats">
-        <div class="col col-lg-3 stat">
-          <h2>Application</h2>
-          <h6>color code</h6>
+      <tal:block tal:repeat="item context/@@folderListing">
+        <div class="row infoboxes">
+          <div class="col col-lg-3 infobox infobox-info1">
+            <h2 tal:content="item/Title"><i class="icon-ok"></i>
+            </h2>
+          </div>
+          <div class="col col-lg-9 infobox infobox-plain">
+            <h3>Component</h3>
+          </div>
         </div>
-        <div class="col col-lg-3 stat success">
-          <h2>Application</h2>
-          <h6>color code</h6>
-        </div>
-        <div class="col col-lg-3 stat info2">
-          <h2>Application</h2>
-          <h6>color code</h6>
-        </div>
-        <div class="col col-lg-3 stat danger">
-          <h2>Application</h2>
-          <h6>color code</h6>
-        </div>
-      </div>
-      <div class="stats">
-        <div class="stat purple">
-          <h2>Application</h2>
-          <h6>color code</h6>
-        </div>
-      </div>
-      <p class="text-muted">
-        <strong>Note:</strong>
-        These colors should eventually be adjusted to be retina ready
-      </p>
+      </tal:block>
     </div>
   </div>
 
