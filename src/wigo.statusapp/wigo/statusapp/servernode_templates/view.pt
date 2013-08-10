@@ -10,15 +10,16 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-  <div class="workspace-window">
+  <div class="workspace-window"
+    tal:define="cstate context/@@plone_context_state;
+                parent cstate/parent;
+                parent_url parent/absolute_url">
     <div class="workspace-window-header">
+        <a class="pull-right" href="" tal:attributes="href parent_url">Return</a>
       <h2 tal:content="context/Title">Node name</h2>
     </div>
-    <div class="workspace-window-subheader">
-      <h3 tal:content="context/Description">Node description</h3>
-    </div>
     <div class="workspace-window-body">
-      <p class="lead">
+      <p class="lead" tal:content="context/Description">
         The actual content panel filled with context specific information
       </p>
       <div class="row"

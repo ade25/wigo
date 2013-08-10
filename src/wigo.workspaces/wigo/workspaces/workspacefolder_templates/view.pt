@@ -25,6 +25,14 @@
             incidents and server nodes
         </p>
     </div>
+    <hr>
+    <h2>Member Workspaces <small>will be removed probably</small></h2>
+    <ul>
+        <li tal:repeat="item context/@@folderListing">
+            <a href="" tal:attributes="href item/getURL"
+                tal:content="item/Title" />
+        </li>
+    </ul>
 
   </metal:content-core>
 </metal:main>

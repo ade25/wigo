@@ -29,6 +29,7 @@
           </div>
           <div class="col col-lg-9 infobox infobox-plain">
             <h3>Component</h3>
+            <a href="" tal:attributes="href item/getURL">show</a>
           </div>
         </div>
       </tal:block>

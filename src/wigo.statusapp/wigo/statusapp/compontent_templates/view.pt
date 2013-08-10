@@ -30,6 +30,7 @@
                 <div class="infobox">
                   <h2 tal:content="node/Title" />
                   <h6 tal:content="node/server" />
+                  <p><a href="" tal:attributes="href node/getURL">Details</a></p>
                 </div>
               </div>
             </div>

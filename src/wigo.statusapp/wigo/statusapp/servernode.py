@@ -41,8 +41,10 @@ class View(grok.View):
         self.has_info = len(self.server_details()) > 0
 
     def server_details(self):
+        data = {}
         sn = getattr(self.context, 'server')
         url = 'http://%s/serverdetails.json' % sn
         response = urllib2.urlopen(url).read()
-        data = json.loads(response)
+        if response:
+            data = json.loads(response)
         return data
