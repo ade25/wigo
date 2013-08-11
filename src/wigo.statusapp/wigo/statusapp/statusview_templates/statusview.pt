@@ -10,35 +10,28 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-  <div class="workspace-window">
-    <div class="workspace-window-header">
-      <h2 i18n:translate="">What is going on?</h2>
-    </div>
-    <div class="workspace-window-body">
-      <div class="row infoboxes">
-        <div class="col col-lg-9 infobox infobox-success">
-          <h2 i18n:translate="">All systems operational</h2>
+    <div class="sqa-status sqa-status-operational">
+        <div class="row">
+            <div class="col col-lg-8">
+              <strong class="sqa-status-name">All systems operational</strong>
+            </div>
+            <div class="col col-lg-4 text-right">
+               <span class="sqa-status-timestamp">Refreshed 14 minutes ago</span>
+            </div>
         </div>
-        <div class="col col-lg-3 infobox infobox-info2">
-          <h2><i class="icon-ok"></i>
-          </h2>
+    </div>
+    <div class="sqa-panel" tal:condition="view/has_components">
+      <div class="sqa-component" tal:repeat="item view/available_components">
+        <div class="row">
+            <div class="col-6 col-lg-8">
+                <h4 class="sqa-component-name" tal:content="item/Title">Hosted Pages</h4>
+            </div>
+            <div class="col-6 col-lg-4">
+                <h5 class="sqa-component-state sqa-component-state-operational pull-right">Operational</h5>
+            </div>
         </div>
       </div>
-      <div class="page-header">
-        <h2 i18n:translate="">What is this site?</h2>
-      </div>
-      <p class="lead" i18n:translate="">
-        We continuously monitor the status of vorwaerts-werbung.de and all its related
-        services. If there are any interruptions in service, a note will be
-        posted here.</p>
-      <p i18n:translate="">
-        If you are experiencing problems connecting to one of our services
-        and do not see a notice posted, please email hallo@vorwaerts-werbung.de.
-      </p>
-      <hr>
-      
     </div>
-  </div>
 
   </metal:content-core>
 </metal:main>

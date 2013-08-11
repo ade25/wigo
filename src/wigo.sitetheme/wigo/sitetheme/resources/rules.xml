@@ -9,6 +9,7 @@
          tiles editiong overlays -->
     <!--<theme href="minimal.html" if-path="@@edit-tile" />-->
 
+    <theme href="statuspage.html" css:if-content="body.template-status-quo" />
     <theme href="login.html" css:if-content="body.template-login_form" />
     <theme href="login.html" css:if-content="body.template-logged_out" />
 
@@ -77,7 +78,7 @@
             css:theme-children='#breadcrumbs' />
 
         <!-- Document Content -->
-        <replace css:content-children="#content" 
+       <replace css:content-children="#content" 
             css:theme-children="#content" />
 
         <rules css:if-content="body.section-ws">
@@ -96,13 +97,7 @@
             css:theme-children="#below-main-content" />
 
         <!-- Columns -->
-        <replace css:content-children="#portal-column-one > *"
-            css:theme-children="#sidebar-left" />
-        <replace css:content-children="#portal-column-two > *"
-            css:theme-children="#sidebar-right" />
-        <!-- wigo for the fixed.html template -->
-        <replace css:content-children="#portal-column-two > *"
-            css:theme-children="#sidebar" />
+
 
         <drop theme="/html/body/script" />
 
