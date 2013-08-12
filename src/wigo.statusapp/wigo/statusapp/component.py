@@ -17,7 +17,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from wigo.statusapp import MessageFactory as _
 
 
-class ICompontent(form.Schema, IImageScaleTraversable):
+class IComponent(form.Schema, IImageScaleTraversable):
     """
     A collection of services and associated server nodes
     """
@@ -31,11 +31,11 @@ class ICompontent(form.Schema, IImageScaleTraversable):
     )
 
 
-class Compontent(Container):
-    grok.implements(ICompontent)
+class Component(Container):
+    grok.implements(IComponent)
 
 
 class View(grok.View):
-    grok.context(ICompontent)
+    grok.context(IComponent)
     grok.require('zope2.View')
     grok.name('view')

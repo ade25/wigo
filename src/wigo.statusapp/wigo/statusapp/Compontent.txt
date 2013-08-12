@@ -1,4 +1,4 @@
-Compontent Tests
+Component Tests
 -----------------
 
 This is a DocTest file, using the Python doctest format.
@@ -9,12 +9,12 @@ Create a Compontent object and put it in a folder
     Create the object::
 
     >>> from zope.component import createObject
-    >>> container = createObject('wigo.statusapp.compontent')
+    >>> container = createObject('wigo.statusapp.component')
 
     Verify it's type::
 
     >>> container.portal_type
-    'wigo.statusapp.compontent'
+    'wigo.statusapp.component'
 
     Give it a title::
 
