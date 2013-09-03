@@ -97,7 +97,8 @@
             css:theme-children="#below-main-content" />
 
         <!-- Columns -->
-
+        <replace css:content-children="#ws-sidebar" 
+                css:theme-children="#ws-sidebar" />
 
         <drop theme="/html/body/script" />
 
