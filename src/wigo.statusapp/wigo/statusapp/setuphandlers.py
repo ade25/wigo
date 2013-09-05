@@ -17,6 +17,7 @@ def setup_security(portal):
     #site security setup!
     security = ISecuritySchema(site)
     security.set_enable_user_folders(True)
+    security.use_uuid_as_userid(True)
 
 
 def setupVarious(context):
