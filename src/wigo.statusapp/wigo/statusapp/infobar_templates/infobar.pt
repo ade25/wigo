@@ -37,7 +37,8 @@
     <li><a class="nav-header" tal:attributes="href python:app_url + '/crm'">
         CRM</a>
     </li>
-    <li><a href="#css-overview">Customers</a></li>
+    <li><a href="#css-overview" tal:attributes="href python:app_url + '/crm/@@customers'">
+        Customers</a></li>
     <li><a href="#grid">Satistics</a></li>
 
   </ul>
