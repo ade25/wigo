@@ -39,6 +39,8 @@
     </li>
     <li><a href="#css-overview" tal:attributes="href python:app_url + '/crm/@@customers'">
         Customers</a></li>
+    <li><a href="#css-overview" tal:attributes="href python:app_url + '/crm/@@domains'">
+        Hosted Domains</a></li>
     <li><a href="#grid">Satistics</a></li>
 
   </ul>
