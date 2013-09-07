@@ -52,6 +52,30 @@ def test_suite():
 
         # -*- extra stuff goes here -*-
 
+        # Integration tests for HostedDomain
+        ztc.ZopeDocFileSuite(
+            'HostedDomain.txt',
+            package='wigo.crmtool',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
+        # Integration tests for CRMTool
+        ztc.ZopeDocFileSuite(
+            'CRMTool.txt',
+            package='wigo.crmtool',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
+        # Integration tests for Customer
+        ztc.ZopeDocFileSuite(
+            'Customer.txt',
+            package='wigo.crmtool',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
         ])
 
 if __name__ == '__main__':

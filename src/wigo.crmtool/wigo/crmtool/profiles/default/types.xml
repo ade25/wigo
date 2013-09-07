@@ -8,4 +8,7 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="wigo.crmtool.hosteddomain" meta_type="Dexterity FTI" />
+  <object name="wigo.crmtool.crmtool" meta_type="Dexterity FTI" />
+  <object name="wigo.crmtool.customer" meta_type="Dexterity FTI" />
 </object>
