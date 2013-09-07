@@ -22,24 +22,30 @@ class Infobar(grok.Viewlet):
     def get_multi_adapter(self, name):
         return getMultiAdapter((self.context, self.request), name=name)
 
+    @property
+    def app_url(self):
+        url = self.portal_url + '/sqa'
+        return url
+
     @memoize
     def user_displayname(self):
         """Get the username of the currently logged in user """
-
         if self.anonymous:
             return None
-
         member = api.user.get_current()
         userid = member.getId()
-
         membership = api.portal.get_tool(name='portal_membership')
         memberInfo = membership.getMemberInfo(userid)
-
         fullname = userid
-
-        # Member info is None if there's no Plone user object, as when using
-        # OpenID.
         if memberInfo is not None:
             fullname = memberInfo.get('fullname', '') or fullname
 
         return fullname
+
+    def user_workspace(self):
+        """ Get user home folder that acts as a workspace """
+        if self.anonymous:
+            return None
+        member = api.user.get_current()
+        homefolder = member.getHomeFolder()
+        return homefolder.absolute_url()
