@@ -12,7 +12,20 @@
 
   <div class="workspace-window">
     <div class="workspace-window-header">
-      <h2 tal:content="context/Title">Workspace Body</h2>
+      <h1>Status Quo Ante
+        <small> What is going on?</small>
+      </h1>
+    </div>
+    <div class="jumbotron ws-hero">
+        <h1>Willkommen</h1>
+        <p class="lead">
+            Die <strong>What is going on</strong> Applikation ist
+            bereits installiert. Im nächsten Schritt sollte das automatische
+            Setup ausgeführt werden, um mit der Arbeit zu beginnen.
+        </p>
+        <a class="btn btn-primary btn-lg">
+            Setup ausführen
+        </a>
     </div>
     <div class="workspace-window-subheader">
       <h3 tal:content="context/Description">Info Workspace or context actions</h3>
@@ -21,6 +34,9 @@
       <p class="lead">
         The actual content panel filled with context specific information
       </p>
+    <div class="page-header">
+        <h2>Workspaces</h2>
+    </div>
       <tal:block tal:repeat="item context/@@folderListing">
         <div class="row infoboxes">
           <div class="col col-lg-3 infobox infobox-info1">

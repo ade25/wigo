@@ -24,5 +24,6 @@ def setupVarious(context):
     if context.readDataFile('wigo.statusapp-various.txt') is None:
         return
     portal = api.portal.get()
+    setup_workspaces(portal)
     # call update security
     setup_security(portal)

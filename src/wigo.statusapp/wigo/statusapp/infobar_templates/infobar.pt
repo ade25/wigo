@@ -6,12 +6,14 @@
     </h3>
     <div class="ws-sidebar-block">
         <h4 tal:content="viewlet/user_displayname">Information</h4>
-        <p><small>zuletzt verändert</small> vor 2 Wochen</p>
+        <p><small>verändert</small> vor 2 Wochen</p>
     </div>
 
   <ul class="nav ws-nav bs-docs-sidenav">
 
-    <li><a href="#welcome">WWorkspace</a></li>
+    <li><a class="nav-header" href="#welcome">Dashboard</a></li>
+
+    <li><a href="#welcome">My Workspace</a></li>
 
     <!-- Status Page -->
     <li><a class="nav-header" href="#css">Status Page</a></li>
@@ -20,7 +22,7 @@
     <li><a href="#grid">Incidents</a></li>
 
     <!-- Customer Manager -->
-    <li><a class="nav-header" href="#css">Hosting</a></li>
+    <li><a class="nav-header" href="#css">CRM</a></li>
     <li><a href="#css-overview">Customers</a></li>
     <li><a href="#grid">Satistics</a></li>
 
