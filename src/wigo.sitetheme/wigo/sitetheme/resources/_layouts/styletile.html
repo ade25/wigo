@@ -1,0 +1,53 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip navigation</a>
+
+    {% include toolbar.html %}
+    <!-- Docs master nav -->
+    {% include navbar.html %}
+
+    <!-- Docs page layout -->
+    <div class="app-header">
+      <div class="container">
+        <div class="jumbotron">
+            <h1>StyleTiles</h1>
+            <p>Several theme components and design mockups</p>
+            <i class="icon-edit"></i>
+        </div>
+      </div>
+    </div>
+
+    {{ content }}
+
+    <div class="container">
+        {% include buttons.html %}
+
+        {% include alerts.html %}
+        {% include list-groups.html %}
+        {% include panels.html %}
+        {% include carousel.html %}
+    </div>
+
+    <hr>
+    <!-- Footer
+    ================================================== -->
+    <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+        <p>Designed and built by <a href="http://ade25.de" target="_blank">ade25</a>.</p>
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </div>
+    </footer>
+
+    <!-- JS and analytics only. -->
+    {% include footer.html %}
+
+  </body>
+</html>
