@@ -1,11 +1,21 @@
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-<script data-ui="development" src="assets/js/jquery.js"></script>
-<!--<script data-ui="development" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>-->
-<!--<script data-ui="development" type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js"></script>-->
-<script data-ui="development" type="text/javascript" src="assets/js/less-1.4.1.min.js"></script>
-<script data-ui="development" src="assets/js/bootstrap.min.js"></script>
-<script data-ui="development" src="js/application.js"></script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ page.base_url }}bower_components/jquery/jquery.js"></script>
+<script src="{{ page.base_url }}bower_components/modernizr/modernizr.js"></script>
+<script src="{{ page.base_url }}bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="{{ page.base_url }}bower_components/holderjs/holder.js"></script>
+<script src="{{ page.base_url }}js/main.js"></script>
+
+<!-- Analytics Piwik (Change URI)
+================================================== -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://fuenfzueins.vorwaerts-werbung.de/piwik/" : "http://fuenfzueins.vorwaerts-werbung.de/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://fuenfzueins.vorwaerts-werbung.de/piwik/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>

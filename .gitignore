@@ -12,6 +12,8 @@ eggs
 fake-eggs
 parts
 dist
+node_modules
+bower_components
 .installed.cfg
 .mr.developer.cfg
 var

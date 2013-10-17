@@ -1,210 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <meta charset="utf-8">
-    <base />
-    <title>Example Theme, based on Twitter Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+---
+layout: workspace
+title: Wigo App
+slug: workspace
+lead: "An overview of the new wigo app"
+base_url: "../../"
+---
 
-    <!-- Le styles -->
-<link href="less/styles.less" rel="stylesheet/less" type="text/css">    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-<script data-ui="development" src="assets/js/jquery.js"></script>
-<!--<script data-ui="development" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>-->
-<!--<script data-ui="development" type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js"></script>-->
-<script data-ui="development" type="text/javascript" src="assets/js/less-1.4.1.min.js"></script>
-<script data-ui="development" src="assets/js/bootstrap.min.js"></script>
-<script data-ui="development" src="js/application.js"></script>  </head>
-  <body class="sqa sqa-workspace">
-
-  <div class="ws-sidebar bs-docs-sidebar" id="ws-sidebar">
-    <h3 class="ws-nav-heading ws-sidebar-heading"><a href="/">Ade25 <i class="icon-terminal"></i> <small>WigoApp</small></a></h3>
-    <div class="ws-sidebar-block">
-        <h4>Konrad Adenauer</h4>
-        <p><a href="/logout"><i class="icon-signout"></i> Abmelden</a></p>
+<main class="app-content-body">
+  <div class="container">
+    <div class="page-header">
+        <h1>Boilerplate</h1>
     </div>
-
-  <ul class="nav ws-nav bs-docs-sidenav">
-
-    <li><a class="nav-header" href="#welcome">Dashboard</a></li>
-
-    <!-- Status Page -->
-    <li><a class="nav-header" href="#css">Status Page</a></li>
-    <li><a href="#css-overview">Overview</a></li>
-    <li><a href="#grid">Components</a></li>
-    <li><a href="#grid">Incidents</a></li>
-
-    <!-- Customer Manager -->
-    <li><a class="nav-header" href="#css">CRM</a></li>
-    <li><a href="#css-overview">Customers</a></li>
-    <li><a href="#grid">Domains</a></li>
-    <li><a href="#grid">Satistics</a></li>
-
-  </ul>
-</div>
-  <section class="ws-content" id="ws-content">
-    <div class="ws-section ws-section-topmost" id="getting-started">
-      <div class="ws-section-header">
-        <h1>Workspace <small>John Doe</small></h1>
-      </div>
-    </div>
-    <div class="ws-section ws-section-components">
-    <div class="panel panel-default ws-panel">
-        <div class="panel-heading">
-            <a class="btn btn-primary pull-right">
-                <i class="icon-plus"></i> Add Incident</a>
-            <h3>Incidents</h3>
-        </div>
-        <div class="panel-body">
-            <p>There are no active incidents</p>
-        </div>
-    </div>
-</div>
-    <div class="ws-section ws-section-components">
-    <div class="panel panel-default ws-panel">
-        <div class="panel-heading">
-            <h3>Components</h3>
-        </div>
-        <div class="list-group">
-            <div class="list-group-item">
-              <div class="row">
-                  <div class="col-xs-6 col-lg-3">
-                      <h4 class="sqa-component-name">Hosted Pages</h4>
-                  </div>
-                  <div class="col-xs-6 col-lg-9">
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Operational
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option2">
-                                Degraded Performance
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option3">
-                                Partial Outage
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option4">
-                                Major Outage
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="list-group-item">
-              <div class="row">
-                  <div class="col-xs-6 col-lg-3">
-                      <h4 class="sqa-component-name">Webmail</h4>
-                  </div>
-                  <div class="col-xs-6 col-lg-9">
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Operational
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option2">
-                                Degraded Performance
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option3">
-                                Partial Outage
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option4">
-                                Major Outage
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="list-group-item">
-              <div class="row">
-                  <div class="col-xs-6 col-lg-3">
-                      <h4 class="sqa-component-name">Mailservices</h4>
-                  </div>
-                  <div class="col-xs-6 col-lg-9">
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Operational
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option2">
-                                Degraded Performance
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option3">
-                                Partial Outage
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option4">
-                                Major Outage
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <hr>
+    <p class="lead">
+        Get started by refining the <strong>_layouts</strong> and customizing the
+        site scaffolding.
+    </p>
+    <p>Icon: <i class="icon-adn icon-2x"></i> <small>25</small>
     <div class="ws-section">
         <div class="ws-section-header">
             <h1>Color codes</h1>
@@ -228,14 +39,5 @@
         <h2>App blue</h2>
       </div>
     </div>
-  </section>
-
-    <hr>
-    <div class="ws-section text-right">            
-        <a class="ws-link-top" href="#ws-content">
-            Back to top
-        </a>
-    </div>
-
-  </body>
-</html>
+  </div>
+</main>

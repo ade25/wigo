@@ -9,17 +9,10 @@
   </head>
   <body class="app-theme-default">
     <a class="sr-only" href="#content">Skip navigation</a>
-
-    {% include toolbar.html %}
-    {% include actionbar.html %}
-    {% include brandbar.html %}
-    {% include navigation.html %}
     <main class="app-content" id="content" role="main">
-        
         {{ content }}
     </main>
     <!-- JS and analytics only. -->
-    {% include footer.html %}
     {% include javascript.html %}
 
   </body>

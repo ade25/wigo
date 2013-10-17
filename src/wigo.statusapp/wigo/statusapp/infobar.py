@@ -1,3 +1,4 @@
+from Acquisition import aq_inner
 from five import grok
 from plone import api
 from zope.component import getMultiAdapter
@@ -39,7 +40,6 @@ class Infobar(grok.Viewlet):
         fullname = userid
         if memberInfo is not None:
             fullname = memberInfo.get('fullname', '') or fullname
-
         return fullname
 
     def user_workspace(self):
@@ -49,3 +49,14 @@ class Infobar(grok.Viewlet):
         member = api.user.get_current()
         homefolder = member.getHomeFolder()
         return homefolder.absolute_url()
+
+    def is_administrator(self):
+        context = aq_inner(self.context)
+        is_admin = False
+        admin_roles = ('SiteAdministrator', 'Manager')
+        user = api.user.get_current()
+        roles = api.user.get_roles(username=user.getId(), obj=context)
+        for role in roles:
+            if role in admin_roles:
+                is_admin = True
+        return is_admin
