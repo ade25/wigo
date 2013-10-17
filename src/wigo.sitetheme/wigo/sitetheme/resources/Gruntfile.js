@@ -12,13 +12,13 @@ module.exports = function (grunt) {
         // Metadata.
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*!\n' +
-                  '* Wigo Theme v<%= pkg.version %> by Ade25\n' +
+                  '* Wigo App Theme v<%= pkg.version %> by Ade25\n' +
                   '* Copyright <%= pkg.author %>\n' +
                   '* Licensed under <%= pkg.licenses %>.\n' +
                   '*\n' +
                   '* Designed and built by ade25\n' +
                   '*/\n',
-        jqueryCheck: 'if (!jQuery) { throw new Error(\"Bootstrap requires jQuery\") }\n\n',
+        jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
 
         // Task configuration.
         clean: {
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
 
         concat: {
             options: {
-                banner: '<%= banner %><%= jqueryCheck %>',
+                banner: '<%= banner %>',
                 stripBanners: false
             },
             dist: {
@@ -54,6 +54,13 @@ module.exports = function (grunt) {
                     'js/main.js'
                 ],
                 dest: 'dist/js/<%= pkg.name %>.js'
+            },
+            theme: {
+                src: [
+                    'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'js/main.js'
+                ],
+                dest: 'dist/js/main.js'
             }
         },
 
@@ -90,14 +97,20 @@ module.exports = function (grunt) {
                 flatten: true,
                 cwd: 'bower_components/',
                 src: ['font-awesome/font/*'],
-                dest: 'assets/fonts/'
+                dest: 'dist/assets/fonts/'
             },
             ico: {
                 expand: true,
                 flatten: true,
                 cwd: 'bower_components/',
                 src: ['bootstrap/assets/ico/*'],
-                dest: 'assets/ico/'
+                dest: 'dist/assets/ico/'
+            },
+            images: {
+                expand: true,
+                flatten: true,
+                src: ['assets/img/*'],
+                dest: 'dist/assets/img/'
             }
         },
         rev: {
@@ -126,6 +139,27 @@ module.exports = function (grunt) {
         },
         jekyll: {
             theme: {}
+        },
+
+        sed: {
+            'clean-source-assets': {
+                path: 'dist/',
+                pattern: '../../assets/',
+                replacement: '../assets/',
+                recursive: true
+            },
+            'clean-source-css': {
+                path: 'dist/',
+                pattern: '../dist/css/styles.css',
+                replacement: 'css/styles.css',
+                recursive: true
+            },
+            'clean-source-js': {
+                path: 'dist/',
+                pattern: '../dist/js/rms.js',
+                replacement: 'js/rms.min.js',
+                recursive: true
+            }
         },
 
         validation: {
@@ -170,21 +204,34 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-html-validation');
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-recess');
+    grunt.loadNpmTasks('grunt-sed');
     grunt.loadNpmTasks('grunt-rev');
-    grunt.loadNpmTasks('browserstack-runner');
+
+
+    // -------------------------------------------------
+    // These are the available tasks provided
+    // Run them in the Terminal like e.g. grunt dist-css
+    // -------------------------------------------------
+
+    // Prepare distrubution
+    grunt.registerTask('dist-init', '', function () {
+        grunt.file.mkdir('dist/assets/');
+    });
+
+    // Copy jekyll generated templates and rename for diazo
+    grunt.registerTask('copy-templates', '', function () {
+        grunt.file.copy('_site/index.html', 'dist/index.html');
+        grunt.file.copy('_site/signin/index.html', 'dist/signin.html');
+        grunt.file.copy('_site/statuspage/index.html', 'dist/statuspage.html');
+        grunt.file.copy('_site/workspace/index.html', 'dist/workspace.html');
+    });
 
     // Docs HTML validation task
     grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
     // Test task.
     var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
-    // Only run BrowserStack tests under Travis
-    if (process.env.TRAVIS) {
-      // Only run BrowserStack tests if this is a mainline commit in twbs/bootstrap, or you have your own BrowserStack key
-        if ((process.env.TRAVIS_REPO_SLUG === 'twbs/bootstrap' && process.env.TRAVIS_PULL_REQUEST === 'false') || process.env.TWBS_HAVE_OWN_BROWSERSTACK_KEY) {
-            testSubtasks.push('browserstack_runner');
-        }
-    }
+
     grunt.registerTask('test', testSubtasks);
 
     // JS distribution task.
@@ -200,10 +247,10 @@ module.exports = function (grunt) {
     grunt.registerTask('dist-cb', ['rev']);
 
     // Template distribution task.
-    grunt.registerTask('dist-templates', ['jekyll:theme']);
+    grunt.registerTask('dist-html', ['jekyll:theme', 'copy-templates', 'sed']);
 
     // Full distribution task.
-    grunt.registerTask('dist', ['clean', 'dist-css', 'dist-fonts', 'dist-js']);
+    grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-html', 'dist-assets']);
 
     // Default task.
     grunt.registerTask('default', ['test', 'dist']);
