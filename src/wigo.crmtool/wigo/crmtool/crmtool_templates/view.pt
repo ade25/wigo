@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="wigo.crmtool">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+    <div class="ws-content-page ws-page ws-page-crm">
+        <div class="ws-page-header">
+            <h1 tal:content="context/Title">CRM Tool</h1>
+        </div>
+        <p class="ws-page-lead">
+        <p>Icon: <i class="icon-adn icon-2x"></i> <small>25</small>
+        <hr>
+        <div class="ws-section ws-page-section">
+            <div class="ws-section-header">
+                <h1>Color codes</h1>
+            </div>
+            <div class="ws-section-header app-one">
+            <h2>App one</h2>
+          </div>
+          <div class="ws-section-header app-two">
+            <h2>App two</h2>
+          </div>
+          <div class="ws-section-header app-dark">
+            <h2>App dark</h2>
+          </div>
+          <div class="ws-section-header app-darker">
+            <h2>App darker</h2>
+          </div>
+          <div class="ws-section-header app-darkest">
+            <h2>App darkest</h2>
+          </div>
+          <div class="ws-section-header app-blue">
+            <h2>App blue</h2>
+          </div>
+        </div>
+    </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
