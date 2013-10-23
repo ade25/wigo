@@ -1,5 +1,5 @@
 {
-  "name": "rms",
+  "name": "wigo",
   "version": "1.0.0",
   "homepage": "http://ade25.de",
   "author": "Ade25",
@@ -29,8 +29,12 @@
     "grunt-jekyll": "~0.3.9",
     "grunt-recess": "~0.4.0",
     "grunt-rev": "~0.1.0",
+    "grunt-sed": "~0.1.1",
     "moment": "~2.0.0",
     "matchdep": "~0.1.1",
     "grunt-contrib-imagemin": "~0.3.0"
+  },
+  "dependencies": {
+    "grunt-sed": "~0.1.1"
   }
 }
