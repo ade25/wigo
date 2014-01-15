@@ -91,6 +91,41 @@ module.exports = function (grunt) {
             }
         },
 
+        less: {
+            compileTheme: {
+                options: {
+                    strictMath: false,
+                    sourceMap: true,
+                    outputSourceFiles: true,
+                    sourceMapURL: '<%= pkg.name %>.css.map',
+                    sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+                },
+                files: {
+                    'dist/css/<%= pkg.name %>.css': 'less/styles.less'
+                }
+            },
+            minify: {
+                options: {
+                    cleancss: true,
+                    report: 'min'
+                },
+                files: {
+                    'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
+                }
+            }
+        },
+
+        csscomb: {
+            sort: {
+                options: {
+                    config: 'less/.csscomb.json'
+                },
+                files: {
+                    'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css']
+                }
+            }
+        },
+
         copy: {
             fonts: {
                 expand: true,
@@ -164,10 +199,17 @@ module.exports = function (grunt) {
 
         validation: {
             options: {
-                reset: true
+                charset: 'utf-8',
+                doctype: 'HTML5',
+                failHard: true,
+                reset: true,
+                relaxerror: [
+                  'Bad value X-UA-Compatible for attribute http-equiv on element meta.',
+                  'Element img is missing required attribute src.'
+                ]
             },
             files: {
-                src: ['_gh_pages/**/*.html']
+                src: ['_site/**/*.html']
             }
         },
 
@@ -188,6 +230,11 @@ module.exports = function (grunt) {
                 files: '*.html',
                 tasks: ['jekyll:theme']
             }
+        },
+
+        concurrent: {
+            cj: ['recess', 'copy', 'concat', 'uglify'],
+            ha: ['jekyll:theme', 'copy-templates', 'sed']
         }
     });
 
@@ -229,8 +276,11 @@ module.exports = function (grunt) {
     // Docs HTML validation task
     grunt.registerTask('validate-html', ['jekyll', 'validation']);
 
+    // Javascript Unittests
+    grunt.registerTask('unit-test', ['qunit']);
+
     // Test task.
-    var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
+    var testSubtasks = ['dist-css', 'jshint', 'validate-html'];
 
     grunt.registerTask('test', testSubtasks);
 
@@ -238,7 +288,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dist-js', ['concat', 'uglify']);
 
     // CSS distribution task.
-    grunt.registerTask('dist-css', ['recess']);
+    grunt.registerTask('dist-css', ['less', 'csscomb']);
 
     // Assets distribution task.
     grunt.registerTask('dist-assets', ['copy']);
@@ -249,9 +299,12 @@ module.exports = function (grunt) {
     // Template distribution task.
     grunt.registerTask('dist-html', ['jekyll:theme', 'copy-templates', 'sed']);
 
+    // Concurrent distribution task
+    grunt.registerTask('dist-cc', ['test', 'concurrent:cj', 'concurrent:ha']);
+
     // Full distribution task.
     grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-html', 'dist-assets']);
 
     // Default task.
-    grunt.registerTask('default', ['test', 'dist']);
+    grunt.registerTask('default', ['dist-cc']);
 };

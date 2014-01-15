@@ -1,11 +1,39 @@
----
-layout: default
-title: Wigo App
-slug: Status Page
-lead: "An overview of the new wigo app"
-base_url: "../../"
----
-<section class="container sqa-container">
+<!doctype html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>
+  
+    Wigo App &middot; Bootstrap
+  
+</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../../dist/css/wigo.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="../../bower_components/html5shiv/dist/html5shiv.js"></script>
+  <script src="../../bower_components/respond/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+                               <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+  <body class="app-theme-default">
+    <a class="sr-only" href="#content">Skip navigation</a>
+    <main class="app-content" id="content" role="main">
+        <section class="container sqa-container">
     <div class="sqa-hero-unit">
         <h1 class="text-center">Ade25</h1>
         <div class="row">
@@ -98,3 +126,36 @@ base_url: "../../"
     services. If there are any interruptions in service, a note will be
     posted here.</p>
 </section>
+    </main>
+    <!-- JS and analytics only. -->
+    <script type="text/javascript">
+function downloadJSAtOnload() {
+var element = document.createElement("script");
+element.src = "../../dist/js/wigo.js";
+document.body.appendChild(element);
+}
+if (window.addEventListener)
+window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+window.attachEvent("onload", downloadJSAtOnload);
+else window.onload = downloadJSAtOnload;
+</script>
+    <div class="app-js-slot">
+        <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Lato:300,400,700:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+  </script>
+    </div>
+
+  </body>
+</html>
