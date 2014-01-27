@@ -1,16 +1,19 @@
 import json
 import urllib2
+from Acquisition import aq_inner
 from five import grok
 
-from z3c.form import group, field
 from zope import schema
+from zope.component import getUtility
+from zope.lifecycleevent import modified
 
 from plone.dexterity.content import Container
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.supermodel import model
+from plone.directives import form
 
-from plone.app.textfield import RichText
-
+from Products.statusmessages.interfaces import IStatusMessage
+from wigo.statusapp.tool import IWigoTool
 
 from wigo.statusapp import MessageFactory as _
 
@@ -23,6 +26,19 @@ class IServerNode(model.Schema, IImageScaleTraversable):
         title=_(u"Server Name"),
         description=_(u"Enter a fully qualified servername"),
         required=True
+    )
+    protocol = schema.TextLine(
+        title=_(u"Request Protocol"),
+        description=_(u"Specify alternative protocol e.g. smtp for mail server"),
+        default=u"http",
+        required=True
+    )
+    form.mode(serverdetails='hidden')
+    serverdetails = schema.TextLine(
+        title=_(u"server Details"),
+        description=_(u"Serverdetails json storage. You normally should have "
+                      u"no need to change this manually"),
+        required=False,
     )
 
 
@@ -37,27 +53,30 @@ class View(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
-    def update(self):
-        self.has_info = len(self.server_details()) > 0
+    def check_server_status(self):
+        host = getattr(self.context, 'server')
+        protocol = getattr(self.context, 'protocol', 'http')
+        tool = getUtility(IWigoTool)
+        status = tool.status(hostname=host, service=protocol)
+        return status
 
-    def server_details(self):
-        data = {}
-        sn = getattr(self.context, 'server')
-        url = 'http://%s/serverdetails.json' % sn
-        response = urllib2.urlopen(url).read()
-        if response:
-            data = json.loads(response)
-        return data
 
-    def get(self, service=None, **kwargs):
-        service_url = self.get_config('api_uri')
-        service_key = self.get_config('client_key')
-        params = {}
-        params['service'] = service
-        params['key'] = service_key
-        additional_params = urlencode(sorted(kwargs.iteritems()))
-        url = service_url + '?' + urlencode(params) + '&' + additional_params
-        with contextlib.closing(requests.get(url, verify=False)) as response:
-            r = response
-            if r.status_code == requests.codes.ok:
-                return r.json()
+class ServerDetails(grok.View):
+    grok.context(IServerNode)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('update-serverdetails')
+
+    def render(self):
+        context = aq_inner(self.context)
+        tool = getUtility(IWigoTool)
+        hostname = getattr(context, 'server', '')
+        if hostname is not None:
+            data = tool.get(hostname=hostname)
+            setattr(context, 'serverdetails', data)
+            modified(context)
+            context.reindexObject(idxs='modified')
+            IStatusMessage(self.request).addStatusMessage(
+                _(u"The panel has successfully been updated"),
+                type='info')
+            next_url = context.absolute_url()
+            return self.request.response.redirect(next_url)

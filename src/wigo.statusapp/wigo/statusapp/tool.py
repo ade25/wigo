@@ -1,46 +1,71 @@
-#! /usr/bin/env python
-
-from os import system
+import json
+import socket
+import requests
+import contextlib
+import smtplib
+from urllib import urlencode
 from urllib2 import urlopen
-from socket import socket
-from sys import argv
-from time import asctime
-from smtplib import SMTP
+from urllib2 import HTTPError
+from five import grok
+from plone import api
+from zope.interface import Interface
 
 
-def tcp_test(server_info):
-    cpos = server_info.find(':')
-    try:
-        sock = socket()
-        sock.connect((server_info[:cpos], int(server_info[cpos + 1:])))
-        sock.close
-        return True
-    except:
-        return False
+DEFAULT_SERVICE = 'http'
+DEFAULT_SERVICE_URI = 'serverdetails.json'
+DEFAULT_SERVICE_TIMEOUT = socket.getdefaulttimeout()
 
 
-def http_test(server_info):
-    try:
-        data = urlopen(server_info).read()
-        if data:
-            return True
-    except:
-        return False
+class IWigoTool(Interface):
+    """ Call processing and optional session data storage entrypoint """
+
+    def status(context):
+        """ Check availability of external service
+
+        @param timeout: Set status request timeout
+        @param service: Service type e.g. tcp
+        @param host:    Hostname of the component node
+        @param payload: Pass additional parameters e.g. auth tokens
+        """
 
 
-def server_test(test_type, server_info):
-    if test_type.lower() == 'tcp':
-        return tcp_test(server_info)
-    elif test_type.lower() == 'http':
-        return http_test(server_info)
+class WigoTool(grok.GlobalUtility):
+    grok.provides(IWigoTool)
 
-smtp = SMTP('mail.vorwaerts-werbung.de')
+    def status(self,
+               hostname=None,
+               service=DEFAULT_SERVICE,
+               timeout=DEFAULT_SERVICE_TIMEOUT,
+               **kwargs):
+        info = {}
+        info['name'] = service
+        if service == 'smtp':
+            smtp = smtplib.SMTP()
+            response = smtp.connect(hostname)
+            info['code'] = response[0]
+            info['status'] = 'active'
+        else:
+            url = 'http://{0}'.format(hostname)
+            with contextlib.closing(requests.get(url)) as response:
+                r = response
+                sc = r.status_code
+                info['code'] = sc
+                if sc == requests.codes.ok:
+                    info['status'] = 'active'
+                else:
+                    info['code'] = 'unreachable endpoint'
+        return info
 
-
-def notifyUser(smtp, smtp_user, smtp_password, from_email, to_email, msg):
-    smtp.login(smtp_user, smtp_password)
-    smtp.sendmail(from_email, to_email, msg.as_string())
-    smtp.quit()
+    def get(self,
+            hostname=None,
+            path_info=DEFAULT_SERVICE_URI,
+            timeout=DEFAULT_SERVICE_TIMEOUT, **kwargs):
+        service_url = 'http://{0}'.format(hostname)
+        url = service_url + '/{0}'.format(path_info)
+        with contextlib.closing(requests.get(url)) as response:
+            r = response
+            if r.status_code == requests.codes.ok:
+                return r.json()
 
 
 class DictDiffer(object):

@@ -1,21 +1,22 @@
+import json
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
 from five import grok
 from plone import api
 
+from zope.component import getUtility
 from zope.component import getMultiAdapter
 from plone.keyring import django_random
 from zope.schema.vocabulary import getVocabularyRegistry
 
 from plone.dexterity.content import Container
-from plone.directives import dexterity
-from plone.namedfile.field import NamedImage, NamedFile
-from plone.namedfile.field import NamedBlobImage, NamedBlobFile
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.supermodel import model
 
 from Products.CMFPlone.utils import safe_unicode
 from plone.app.contentlisting.interfaces import IContentListing
+from Products.CMFCore.interfaces import IContentish
+from wigo.statusapp.tool import IWigoTool
 from wigo.statusapp.component import IComponent
 
 from wigo.statusapp import MessageFactory as _
@@ -128,3 +129,30 @@ class View(grok.View):
         context = aq_inner(self.context)
         items = context.restrictedTraverse('@@folderListing')()
         return items
+
+
+class ServiceStatusAsJson(grok.View):
+    """ Return service status json info
+
+    This view is available to javascript frontend code and is meant to
+    provide async status information on service nodes
+    """
+    grok.context(IContentish)
+    grok.require('zope2.View')
+    grok.name('node-status-json')
+
+    def update(self):
+        self.host = self.request.get('host', None)
+        self.service = self.request.get('service', 'http')
+
+    def render(self):
+        if self.host is not None:
+            data = self.get_node_status()
+            pretty = json.dumps(data, sort_keys=True)
+            self.request.response.setHeader("Content-type", "application/json")
+            return pretty
+
+    def get_node_status(self):
+        tool = getUtility(IWigoTool)
+        status = tool.status(hostname=self.host, service=self.service)
+        return status

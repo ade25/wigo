@@ -13,7 +13,8 @@
   <div class="workspace-window"
     tal:define="cstate context/@@plone_context_state;
                 parent cstate/parent;
-                parent_url parent/absolute_url">
+                parent_url parent/absolute_url;
+                protocol context/protocol">
     <div class="workspace-window-header">
         <a class="pull-right" href="" tal:attributes="href parent_url">Return</a>
       <h2 tal:content="context/Title">Node name</h2>
@@ -23,18 +24,20 @@
         The actual content panel filled with context specific information
       </p>
       <div class="row"
-         tal:define="details view/server_details">
-        <div class="col col-lg-3">
+         tal:define="details context/serverdetails">
+        <div class="col-xs-12 col-sm-3">
           <div class="infoboxes">
             <div class="infobox">
-              <h2 tal:content="details/server" />
-              <h6 tal:content="details/servername" />
+              <h2 tal:content="context/Title" />
+              <h6 tal:content="context/server" />
             </div>
           </div>
         </div>
-        <div class="col col-lg-9">
-          <table class="table table-condensed">
-            <tbody>
+        <div class="col-xs-12 col-sm-9"
+            tal:condition="python:protocol == 'http'">
+          <table class="table table-condensed"
+            tal:condition="context/serverdetails">
+            <tbody tal:define="details context/serverdetails">
               <tr tal:repeat="site details/sites">
                 <th><span tal:replace="site/title" /></th>
                 <td class="text-left"
@@ -48,6 +51,23 @@
               </tr>
             </tbody>
           </table>
+          <hr>
+            <a class="btn btn-default" tal:condition="context/serverdetails"
+                i18n:translate=""
+                tal:attributes="href string:${context/absolute_url}/@@update-serverdetails">
+                Reload data
+            </a>
+          <div class="alert alert-warning" tal:condition="not:context/serverdetails">
+            <strong i18n:translate="">Hint:</strong>
+            <span i18n:translate="">There is no detailed data for this node available yet.</span>
+            <a class="alert-link" tal:attributes="href string:${context/absolute_url}/@@update-serverdetails">
+                Update now</a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-9"
+            tal:condition="python:protocol != 'http'">
+            <p i18n:translate="">This service node does not provide any server details
+                in json format</p>
         </div>
       </div>
     </div>
