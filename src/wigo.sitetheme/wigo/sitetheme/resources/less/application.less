@@ -6,6 +6,15 @@ body {
     padding-top: @navbar-height;
 }
 
+.app-navbar-brand {
+    font-size: ceil((@font-size-base * 1.5));
+    color: #fff;
+    > .app-brand-icon {
+        color: @cu-blue;
+    }
+}
+
+
 .sqa-container-login form {
     padding: @line-height-computed;
     margin-bottom: @line-height-computed;

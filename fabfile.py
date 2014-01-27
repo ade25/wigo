@@ -13,7 +13,7 @@ env.use_ssh_config = True
 env.forward_agent = True
 env.port = '22222'
 env.user = 'root'
-env.hosts = ['6zu4']
+env.hosts = ['wigo']
 env.webserver = '/opt/webserver/buildout.webserver'
 env.code_root = '/opt/sites/wigo/buildout.wigo'
 env.local_root = '/Users/cb/dev/wigo/buildout.wigo'
@@ -22,28 +22,21 @@ env.code_user = 'root'
 env.prod_user = 'www'
 
 
-@task
-def supervisorctl(*cmd):
-    """Runs an arbitrary supervisorctl command."""
-    with cd(env.webserver):
-        run('bin/supervisorctl ' + ' '.join(cmd))
-
-
 def deploy():
     """ Deploy current master to production server """
     execute(project.site.update())
-    execute(project.site.restart())
+    execute(project.site.restart_zope())
 
 
 def deploy_full():
     """ Deploy current master to production and run buildout """
     project.site.update()
     project.site.build()
-    project.site.restart()
+    project.site.restart_zope()
 
 
 def rebuild():
     """ Deploy current master and run full buildout """
     project.site.update()
     project.site.build_full()
-    project.site.restart()
+    project.site.restart_zope()

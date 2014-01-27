@@ -38,7 +38,8 @@
     "moment": "~2.0.0",
     "matchdep": "~0.1.1",
     "grunt-concurrent": "~0.4.2",
-    "grunt-newer": "~0.6.0"
+    "grunt-newer": "~0.6.0",
+    "load-grunt-tasks": "~0.2.1"
   },
   "dependencies": {
     "grunt-sed": "~0.1.1"

@@ -26,11 +26,11 @@
 
     <!-- Status Page -->
     <li><a class="nav-header" href="#css">Status Page</a></li>
-    <li><a href="#grid" tal:attributes="href python:app_url + '/components'">
-        Components</a>
-    </li>
     <li><a href="#grid" tal:attributes="href python:app_url + '/@@incidents'">
         Incidents</a>
+    </li>
+    <li><a href="#grid" tal:attributes="href python:app_url + '/components'">
+        Components</a>
     </li>
 
     <!-- Customer Manager -->
@@ -41,7 +41,7 @@
         Customers</a></li>
     <li><a href="#css-overview" tal:attributes="href python:app_url + '/crm/@@domains'">
         Hosted Domains</a></li>
-    <li><a href="#grid">Satistics</a></li>
+    <li><a href="#grid">Statistics</a></li>
 
   </ul>
 </div>

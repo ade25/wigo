@@ -8,23 +8,13 @@
     {% include head.html %}
   </head>
 <body class="sqa sqa-workspace">
+    {% include navbar.html %}
     {% include ws-sidebar.html %}
 
     <main class="ws-content" id="content" role="main">
         {{ content }}
     </main>
 
-  <section class="ws-content" id="ws-content">
-    <div class="ws-section ws-section-topmost" id="getting-started">
-      <div class="ws-section-header">
-        <h1>Workspace <small>John Doe</small></h1>
-      </div>
-    </div>
-    {% include toggleswitch.html %}
-    {% include ws-section-incidents.html %}
-    {% include ws-section-components.html %}
-  </section>
-    <hr>
     <div class="ws-section text-right">            
         <a class="ws-link-top" href="#ws-content">
             Back to top

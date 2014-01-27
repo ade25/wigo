@@ -31,6 +31,44 @@
                                <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 <body class="sqa sqa-workspace">
+    <nav class="navbar navbar-inverse navbar-fixed-top app-navbar" id="app-navbar" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand navbar-right app-navbar-brand" href="/">
+        <i class="fa fa-dot-circle-o fa-lg app-brand-icon"></i> WigoApp</a>
+  </div>
+  <div class="collapse navbar-collapse navbar-ex1-collapse" id="app-navbar-nav">
+        <ul class="nav navbar-nav pull-right">
+          <li id="plone-personal-actions" class="dropdown dropdown-userinfo">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="/author/123456789">
+              <span>John Doe</span>
+              <b class="caret">
+            </b></a>
+            <ul class="dropdown-menu"><li id="plone-personal-actions-dashboard">
+                <a href="/dashboard">My workspace</a>
+              </li>
+              <li id="plone-personal-actions-preferences">
+                <a href="/preferences">Settings</a>
+              </li>
+              <li id="plone-personal-actions-plone_setup">
+                <a href="/controlpanel">Configuration</a>
+              </li>
+              <li id="plone-personal-actions-logout">
+                <a href="/logout">Signout</a>
+              </li>
+            </ul></li>
+        </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">View status page</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
     <div class="ws-sidebar bs-docs-sidebar" id="ws-sidebar">
     <h3 class="ws-nav-heading ws-sidebar-heading"><a href="/">Ade25 <i class="icon-terminal"></i> <small>WigoApp</small></a></h3>
     <div class="ws-sidebar-block">
@@ -58,7 +96,7 @@
 </div>
 
     <main class="ws-content" id="content" role="main">
-        <main class="app-content-body">
+        <main class="app-content-body" id="content">
   <div class="container">
     <div class="page-header">
         <h1>Boilerplate</h1>
@@ -95,191 +133,6 @@
 </main>
     </main>
 
-  <section class="ws-content" id="ws-content">
-    <div class="ws-section ws-section-topmost" id="getting-started">
-      <div class="ws-section-header">
-        <h1>Workspace <small>John Doe</small></h1>
-      </div>
-    </div>
-    <div class="ws-section ws-section-components">
-    <div class="panel panel-default ws-panel">
-        <div class="panel-heading">
-            <h3>Toggleswitch</h3>
-        </div>
-        <div class="list-group">
-            <div class="list-group-item">
-            <form action="." method="post">
-                <div class="row">
-                    <div class="col-xs-12 col-md-8">
-                        <div class="h4">Select this option</div>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <label class="switch switch-green">
-                          <input type="checkbox" class="switch-input">
-                          <span data-off="Off" data-on="On" class="switch-label"></span>
-                          <span class="switch-handle"></span>
-                        </label>
-                    </div>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
-</div>
-    <div class="ws-section ws-section-components">
-    <div class="panel panel-default ws-panel">
-        <div class="panel-heading">
-            <a class="btn btn-primary pull-right">
-                <i class="icon-plus"></i> Add Incident</a>
-            <h3>Incidents</h3>
-        </div>
-        <div class="panel-body">
-            <p>There are no active incidents</p>
-        </div>
-    </div>
-</div>
-
-    <div class="ws-section ws-section-components">
-    <div class="panel panel-default ws-panel">
-        <div class="panel-heading">
-            <h3>Components</h3>
-        </div>
-        <div class="list-group">
-            <div class="list-group-item">
-              <div class="row">
-                  <div class="col-xs-6 col-lg-3">
-                      <h4 class="sqa-component-name">Hosted Pages</h4>
-                  </div>
-                  <div class="col-xs-6 col-lg-9">
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Operational
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option2">
-                                Degraded Performance
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option3">
-                                Partial Outage
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option4">
-                                Major Outage
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="list-group-item">
-              <div class="row">
-                  <div class="col-xs-6 col-lg-3">
-                      <h4 class="sqa-component-name">Webmail</h4>
-                  </div>
-                  <div class="col-xs-6 col-lg-9">
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Operational
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option2">
-                                Degraded Performance
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option3">
-                                Partial Outage
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option4">
-                                Major Outage
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="list-group-item">
-              <div class="row">
-                  <div class="col-xs-6 col-lg-3">
-                      <h4 class="sqa-component-name">Mailservices</h4>
-                  </div>
-                  <div class="col-xs-6 col-lg-9">
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Operational
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option2">
-                                Degraded Performance
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option3">
-                                Partial Outage
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-lg-3">
-                            <div class="radio">
-                              <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option4">
-                                Major Outage
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-  </section>
-    <hr>
     <div class="ws-section text-right">            
         <a class="ws-link-top" href="#ws-content">
             Back to top

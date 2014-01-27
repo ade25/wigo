@@ -4,7 +4,7 @@
 module.exports = function (grunt) {
 
     // load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    require('load-grunt-tasks')(grunt);
 
     // Project configuration.
     grunt.initConfig({
@@ -74,23 +74,6 @@ module.exports = function (grunt) {
             }
         },
 
-        recess: {
-            options: {
-                compile: true
-            },
-            theme: {
-                src: ['less/styles.less'],
-                dest: 'dist/css/styles.css'
-            },
-            min: {
-                options: {
-                    compress: true
-                },
-                src: ['less/styles.less'],
-                dest: 'dist/css/styles.min.css'
-            }
-        },
-
         less: {
             compileTheme: {
                 options: {
@@ -127,11 +110,11 @@ module.exports = function (grunt) {
         },
 
         copy: {
-            fonts: {
+            fontawesome: {
                 expand: true,
                 flatten: true,
                 cwd: 'bower_components/',
-                src: ['font-awesome/font/*'],
+                src: ['font-awesome/fonts/*'],
                 dest: 'dist/assets/fonts/'
             },
             ico: {
@@ -238,23 +221,6 @@ module.exports = function (grunt) {
         }
     });
 
-
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-html-validation');
-    grunt.loadNpmTasks('grunt-jekyll');
-    grunt.loadNpmTasks('grunt-recess');
-    grunt.loadNpmTasks('grunt-sed');
-    grunt.loadNpmTasks('grunt-rev');
-
-
     // -------------------------------------------------
     // These are the available tasks provided
     // Run them in the Terminal like e.g. grunt dist-css
@@ -304,6 +270,9 @@ module.exports = function (grunt) {
 
     // Full distribution task.
     grunt.registerTask('dist', ['clean', 'dist-css', 'dist-js', 'dist-html', 'dist-assets']);
+
+    // Development task main
+    grunt.registerTask('dev', ['dist-css', 'dist-js', 'dist-html']);
 
     // Default task.
     grunt.registerTask('default', ['dist-cc']);

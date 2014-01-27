@@ -16,40 +16,108 @@
         <small>Dashboard</small>
       </h1>
     </div>
-    <div class="jumbotron ws-hero">
-        <h1>Willkommen</h1>
-        <p class="lead">
-            Die <strong>What is going on</strong> Applikation ist
-            bereits installiert. Im nächsten Schritt sollte das automatische
-            Setup ausgeführt werden, um mit der Arbeit zu beginnen.
-        </p>
-        <a class="btn btn-primary btn-lg">
-            Setup ausführen
-        </a>
+    <div class="page-header app-page-header">
+        <h2>Create an incident</h2>
     </div>
-    <div class="workspace-window-subheader">
-      <h3 tal:content="context/Description">Info Workspace or context actions</h3>
-    </div>
-    <div class="workspace-window-body">
-      <p class="lead">
-        The actual content panel filled with context specific information
-      </p>
+
+    <form class="app-form app-create-form"
+        method="post" role="form"
+        tal:define="errors view/errors"
+        tal:attributes="action request/URL">
+        <div class="form-group field"
+            tal:define="error errors/title | nothing;
+                        err_msg python:error and error['active'] == True;
+                        value request/title | nothing"
+            tal:attributes="class python:err_msg and 'form-group has-error' or 'form-group'">
+            <label for="title" i18n:translate="">Incident Name</label>
+                <input class="form-control" id="title"
+                    type="text" name="title"
+                    placeholder="Incident e.g. Database performance issues"
+                    tal:attributes="value python:error and view.default_value(error) or value">
+                <div class="help-block error"
+                    tal:condition="err_msg">
+                  <i class="fa fa-exclamation-triangle"></i>
+                  <span tal:replace="python:error['msg']" />
+                </div>
+        </div><!-- /title field -->
+        <div class="form-group">
+            <label class="radio-inline">
+              <input type="radio" name="incidentType" id="incidentType1" value="incident.type.1" checked="checked">
+                <span i18n:translate="">
+                  Investigating
+                </span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="frequency" id="frequency2" value="frequency.2">
+                <span i18n:translate="">
+                  Identified
+                </span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="frequency" id="frequency3" value="frequency.3">
+                <span i18n:translate="">
+                  Monitoring
+                </span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="frequency" id="frequency3" value="frequency.3">
+                <span i18n:translate="">
+                  Resolved
+                </span>
+            </label>
+        </div>
+        <div class="form-group field">
+            <label for="message" i18n:translate="">Message</label>
+            <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <span tal:replace="structure context/@@authenticator/authenticator"/>
+            <button class="btn btn-primary btn-editpanel"
+                name="form.button.Submit"
+                id="form.button.Submit"
+                i18n:translate="">Create incident</button>
+        </div>
+    </form>
+
     <div class="page-header">
-        <h2>Workspaces</h2>
+        <h2>Components</h2>
     </div>
-      <tal:block tal:repeat="item context/@@folderListing">
-        <div class="row infoboxes">
-          <div class="col col-lg-3 infobox infobox-info1">
-            <h2 tal:content="item/Title"><i class="icon-ok"></i>
-            </h2>
+    <hr>
+        <p tal:repeat="item view/status_vocabulary">
+            <strong i18n:translate="" tal:content="item/title">Monitoring</strong>
+            <span tal:content="item/value" />
+        </p>
+    <hr>
+      <tal:block tal:repeat="item view/component_statuses">
+        <div class="row"
+            tal:define="uuid item/UID;
+                        data python:view.status_info(uuid)">
+          <div class="col-xs-12 col-sm-3">
+            <div class="h4"
+                tal:attributes="class string:h4 component-status component-status-${item/status}"
+                tal:content="item/Title"></div>
           </div>
-          <div class="col col-lg-9 infobox infobox-plain">
-            <h3>Component</h3>
-            <a href="" tal:attributes="href item/getURL">show</a>
+          <div class="col-xs-12 col-sm-9">
+            <div class="form-group">
+                <tal:block tal:repeat="item data">
+                    <label class="radio-inline"
+                        tal:define="fieldname string:status.${uuid};
+                                    active item/active;
+                                    checked python:active == True and 'checked' or ''">
+                      <input type="radio"
+                        tal:attributes="name fieldname;
+                                        id item/value;
+                                        value item/value;
+                                        checked checked">
+                        <span i18n:translate="" tal:content="item/title">
+                          Operational
+                        </span>
+                    </label>
+                </tal:block>
+            </div>
           </div>
         </div>
       </tal:block>
-    </div>
   </div>
 
   </metal:content-core>

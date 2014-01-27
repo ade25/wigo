@@ -25,7 +25,7 @@ class IComponent(form.Schema, IImageScaleTraversable):
         title=_(u"Component Status"),
         description=_(u"Switch component status to signal outages on the "
                       u"public status page."),
-        vocabulary=u"ComponentStatusVocabulary",
+        vocabulary=u"wigo.statusapp.ComponentStatus",
         default='operational',
         required=True,
     )
