@@ -48,3 +48,16 @@ class View(grok.View):
         if response:
             data = json.loads(response)
         return data
+
+    def get(self, service=None, **kwargs):
+        service_url = self.get_config('api_uri')
+        service_key = self.get_config('client_key')
+        params = {}
+        params['service'] = service
+        params['key'] = service_key
+        additional_params = urlencode(sorted(kwargs.iteritems()))
+        url = service_url + '?' + urlencode(params) + '&' + additional_params
+        with contextlib.closing(requests.get(url, verify=False)) as response:
+            r = response
+            if r.status_code == requests.codes.ok:
+                return r.json()

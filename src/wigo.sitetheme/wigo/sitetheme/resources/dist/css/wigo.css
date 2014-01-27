@@ -11484,7 +11484,7 @@ dd.image-caption
 {
     display: block;
 
-    padding: 4px 25px;
+    padding: 11px 22px;
 
     color: #666;
 }
@@ -11527,7 +11527,7 @@ dd.image-caption
 /* Section headings for groups of links */
 .bs-docs-sidenav > li > .nav-header
 {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
 
     margin-top: 20px;

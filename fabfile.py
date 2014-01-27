@@ -22,21 +22,28 @@ env.code_user = 'root'
 env.prod_user = 'www'
 
 
+@task
+def supervisorctl(*cmd):
+    """Runs an arbitrary supervisorctl command."""
+    with cd(env.webserver):
+        run('bin/supervisorctl ' + ' '.join(cmd))
+
+
 def deploy():
     """ Deploy current master to production server """
     execute(project.site.update())
-    execute(project.site.restart_zope())
+    execute(project.site.restart())
 
 
 def deploy_full():
     """ Deploy current master to production and run buildout """
     project.site.update()
     project.site.build()
-    project.site.restart_zope()
+    project.site.restart()
 
 
 def rebuild():
     """ Deploy current master and run full buildout """
     project.site.update()
     project.site.build_full()
-    project.site.restart_zope()
+    project.site.restart()

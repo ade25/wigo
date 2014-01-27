@@ -6,18 +6,15 @@
         </a>
     </h3>
     <div class="ws-sidebar-block">
-        <h4 tal:content="viewlet/user_displayname">Information</h4>
+        <h4>
+            <a href="#welcome"
+            tal:attributes="href app_url">Dashboard</a>
+        </h4>
         <p><a tal:attributes="href string:${viewlet/portal_url}/logout">
-            <i class="icon-signout"></i> Abmelden</a>
         </p>
     </div>
 
   <ul class="nav ws-nav bs-docs-sidenav">
-
-    <li><a class="nav-header" href="#welcome"
-            tal:attributes="href app_url">
-            Dashboard</a>
-    </li>
 
     <li tal:condition="not:viewlet/is_administrator"><a href="#welcome"
             tal:attributes="href viewlet/user_workspace">

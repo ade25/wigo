@@ -12,6 +12,9 @@
 
     <div class="workspace-window">
     <div class="workspace-window-header">
+        <a class="btn btn-default pull-right"
+            tal:attributes="href string:${context/absolute_url}/++add++wigo.statusapp.servernode">
+            Add server/node</a>
       <h2 tal:content="context/Title">Component name</h2>
     </div>
     <div class="workspace-window-subheader">

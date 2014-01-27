@@ -12,9 +12,7 @@
 
   <div class="workspace-window">
     <div class="workspace-window-header">
-      <h1>What is going on?
-        <small>Dashboard</small>
-      </h1>
+      <h1>What is going on?</h1>
     </div>
     <div class="page-header app-page-header">
         <h2>Create an incident</h2>
@@ -80,14 +78,8 @@
     </form>
 
     <div class="page-header">
-        <h2>Components</h2>
+        <h2>Component Status</h2>
     </div>
-    <hr>
-        <p tal:repeat="item view/status_vocabulary">
-            <strong i18n:translate="" tal:content="item/title">Monitoring</strong>
-            <span tal:content="item/value" />
-        </p>
-    <hr>
       <tal:block tal:repeat="item view/component_statuses">
         <div class="row"
             tal:define="uuid item/UID;
