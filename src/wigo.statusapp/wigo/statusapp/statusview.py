@@ -1,6 +1,9 @@
+from Acquisition import aq_inner
 from datetime import datetime
 from five import grok
 from plone import api
+
+from zope.schema.vocabulary import getVocabularyRegistry
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.contentlisting.interfaces import IContentListing
@@ -22,6 +25,16 @@ class StatusView(grok.View):
                         review_state='published')
         results = IContentListing(items)
         return results
+
+    def prettify_status(self, status):
+        context = aq_inner(self.context)
+        registry = getVocabularyRegistry()
+        vocabulary = registry.get(context, 'wigo.statusapp.ComponentStatus')
+        term = vocabulary.getTerm(status)
+        info = {}
+        info['title'] = term.title
+        info['value'] = term.value
+        return info
 
     def rendering_timestamp(self):
         now = datetime.now()

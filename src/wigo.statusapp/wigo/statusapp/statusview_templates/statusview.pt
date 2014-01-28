@@ -31,8 +31,12 @@
             <div class="col-xs-6 col-sm-8">
                 <h4 class="sqa-component-name" tal:content="item/Title">Hosted Pages</h4>
             </div>
-            <div class="col-xs-6 col-sm-4">
-                <h5 class="sqa-component-state sqa-component-state-operational pull-right">Operational</h5>
+            <div class="col-xs-6 col-sm-4"
+                tal:define="status item/status;
+                            info python:view.prettify_status(status)">
+                <h5 class="sqa-component-state sqa-component-state-operational pull-right"
+                    tal:attributes="class string:sqa-component-state sqa-component-state-${info/value} pull-right"
+                    tal:content="info/title">Operational</h5>
             </div>
         </div>
       </div>
