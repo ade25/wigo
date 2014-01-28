@@ -50,7 +50,9 @@ module.exports = function (grunt) {
                     'bower_components/jquery/jquery.js',
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
-                    'bower_components/holderjs/holder.js',
+                    'bower_components/momentjs/moment.js',
+                    'bower_components/momentjs/lang/de.js',
+                    'bower_components/livestampjs/livestamp.js',
                     'js/main.js'
                 ],
                 dest: 'dist/js/<%= pkg.name %>.js'
@@ -58,6 +60,9 @@ module.exports = function (grunt) {
             theme: {
                 src: [
                     'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'bower_components/momentjs/moment.js',
+                    'bower_components/momentjs/lang/de.js',
+                    'bower_components/livestampjs/livestamp.js',
                     'js/main.js'
                 ],
                 dest: 'dist/js/main.js'

@@ -1,3 +1,4 @@
+from datetime import datetime
 from five import grok
 from plone import api
 
@@ -21,3 +22,7 @@ class StatusView(grok.View):
                         review_state='published')
         results = IContentListing(items)
         return results
+
+    def rendering_timestamp(self):
+        now = datetime.now()
+        return now

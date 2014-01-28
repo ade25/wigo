@@ -12,21 +12,26 @@
 
     <div class="sqa-status sqa-status-operational">
         <div class="row">
-            <div class="col col-lg-8">
+            <div class="col-xs-12 col-sm-8">
               <strong class="sqa-status-name">All systems operational</strong>
             </div>
-            <div class="col col-lg-4 text-right">
-               <span class="sqa-status-timestamp">Refreshed 14 minutes ago</span>
+            <div class="col-xs-12 col-sm-4 text-right">
+               <span class="sqa-status-timestamp"
+                    tal:define="timestamp view/rendering_timestamp">
+                    <span i18n:translate="">Refreshed</span>
+                     <span tal:attributes="data-livestamp string:${timestamp}"
+                        tal:content="timestamp" />
+                </span>
             </div>
         </div>
     </div>
     <div class="sqa-panel" tal:condition="view/has_components">
       <div class="sqa-component" tal:repeat="item view/available_components">
         <div class="row">
-            <div class="col-6 col-lg-8">
+            <div class="col-xs-6 col-sm-8">
                 <h4 class="sqa-component-name" tal:content="item/Title">Hosted Pages</h4>
             </div>
-            <div class="col-6 col-lg-4">
+            <div class="col-xs-6 col-sm-4">
                 <h5 class="sqa-component-state sqa-component-state-operational pull-right">Operational</h5>
             </div>
         </div>
