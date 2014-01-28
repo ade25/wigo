@@ -86,7 +86,7 @@
                         data python:view.status_info(uuid)">
           <div class="col-xs-12 col-sm-3">
             <div class="h4"
-                tal:attributes="class string:h4 component-status component-status-${item/status}"
+                tal:attributes="class string:h4 sqa-component-state sqa-component-state-${item/status}"
                 tal:content="item/Title"></div>
           </div>
           <div class="col-xs-12 col-sm-9">

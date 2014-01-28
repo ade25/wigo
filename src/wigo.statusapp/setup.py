@@ -28,6 +28,7 @@ setup(name='wigo.statusapp',
           'setuptools',
           'requests',
           'plone.api',
+          'plone.event',
           'plone.app.dexterity [grok]',
           'plone.namedfile [blobs]',
           # -*- Extra requirements: -*-

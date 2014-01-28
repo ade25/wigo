@@ -113,6 +113,14 @@ class View(grok.View):
             data.append(info)
         return data
 
+    def prettify_status(self, status):
+        vocabulary = self.status_vocabulary()
+        term = vocabulary.getTerm(status)
+        info = {}
+        info['title'] = term.title
+        info['value'] = term.value
+        return info
+
     def status_vocabulary(self):
         context = aq_inner(self.context)
         registry = getVocabularyRegistry()

@@ -52,6 +52,22 @@ def test_suite():
 
         # -*- extra stuff goes here -*-
 
+        # Integration tests for Incident
+        ztc.ZopeDocFileSuite(
+            'Incident.txt',
+            package='wigo.statusapp',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
+        # Integration tests for IncidentManager
+        ztc.ZopeDocFileSuite(
+            'IncidentManager.txt',
+            package='wigo.statusapp',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
         # Integration tests for Compontent
         ztc.ZopeDocFileSuite(
             'Compontent.txt',

@@ -3,11 +3,13 @@ from datetime import datetime
 from five import grok
 from plone import api
 
+from zope.component import getUtility
 from zope.schema.vocabulary import getVocabularyRegistry
 
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.contentlisting.interfaces import IContentListing
 
+from wigo.statusapp.tool import IWigoTool
 from wigo.statusapp.component import IComponent
 
 
@@ -39,3 +41,11 @@ class StatusView(grok.View):
     def rendering_timestamp(self):
         now = datetime.now()
         return now
+
+    def build_calendar(self):
+        tool = getUtility(IWigoTool)
+        today = datetime.now()
+        twoweeks = datetime.timedelta(days=14)
+        end = today - twoweeks
+        cal = tool.construct_calendar(incidents, today, end)
+        return cal
