@@ -224,6 +224,7 @@ module.exports = function (grunt) {
             cj: ['recess', 'copy', 'concat', 'uglify'],
             ha: ['jekyll:theme', 'copy-templates', 'sed']
         }
+
     });
 
     // -------------------------------------------------

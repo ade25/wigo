@@ -10,10 +10,10 @@ class IncidentTypeVocabulary(object):
 
     def __call__(self, context):
         TYPES = {
-            _(u"investigating"): 'investigating',
-            _(u"identified"): 'identified',
-            _(u"monitoring"): 'monitoring',
-            _(u"resolved"): 'resolved',
+            _(u"Investigating"): 'investigating',
+            _(u"Identified"): 'identified',
+            _(u"Monitoring"): 'monitoring',
+            _(u"Resolved"): 'resolved',
         }
         return SimpleVocabulary([SimpleTerm(value, title=title)
                                 for title, value in TYPES.iteritems()])
