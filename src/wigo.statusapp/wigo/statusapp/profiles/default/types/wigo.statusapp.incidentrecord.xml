@@ -1,24 +1,22 @@
 <?xml version="1.0"?>
-<object name="wigo.statusapp.statusapp"
+<object name="wigo.statusapp.incidentrecord"
    meta_type="Dexterity FTI"
    i18n:domain="wigo.statusapp" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
-  <property name="title" i18n:translate="">StatusApp</property>
+  <property name="title" i18n:translate="">IncidentRecord</property>
   <property name="description"
-    i18n:translate="">A collection of server status information</property>
-  <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
-  <property name="factory">wigo.statusapp.statusapp</property>
-  <property name="global_allow">True</property>
+    i18n:translate="">A single status message with timestamp to track progress</property>
+  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
+  <property name="factory">wigo.statusapp.incidentrecord</property>
+  <property name="global_allow">False</property>
   <property name="filter_content_types">True</property>
-  <property name="allowed_content_types">
-    <element value="wigo.statusapp.component" />
-  </property>
+  <property name="allowed_content_types" />
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">wigo.statusapp.statusapp.IStatusApp</property>
-  <property name="klass">wigo.statusapp.statusapp.StatusApp</property>
+  <property name="schema">wigo.statusapp.incidentrecord.IIncidentRecord</property>
+  <property name="klass">wigo.statusapp.incidentrecord.IncidentRecord</property>
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />

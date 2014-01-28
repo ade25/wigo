@@ -22,7 +22,10 @@ class IIncident(form.Schema, IImageScaleTraversable):
     """
     A single incident containing status information
     """
-
+    title = schema.TextLine(
+        title=_(u"Incident Name"),
+        required=True,
+    )
     status = schema.Choice(
         title=_(u"Component Status"),
         description=_(u"Switch component status to signal outages on the "
