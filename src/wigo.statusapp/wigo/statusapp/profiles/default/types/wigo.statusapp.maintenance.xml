@@ -1,28 +1,27 @@
 <?xml version="1.0"?>
-<object name="wigo.statusapp.incident"
+<object name="wigo.statusapp.maintenance"
    meta_type="Dexterity FTI"
    i18n:domain="wigo.statusapp" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
-  <property name="title" i18n:translate="">Incident</property>
+  <property name="title" i18n:translate="">Maintenance</property>
   <property name="description"
-    i18n:translate="">A single incident containing status information</property>
+    i18n:translate="">Scheduled maintenance timeframe and notifications</property>
   <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
-  <property name="factory">wigo.statusapp.incident</property>
+  <property name="factory">wigo.statusapp.maintenance</property>
   <property name="global_allow">False</property>
-  <property name="filter_content_types">True</property>
-  <property name="allowed_content_types">
-    <element value="wigo.statusapp.incidentrecord" />
-  </property>
+  <property name="filter_content_types">False</property>
+  <property name="allowed_content_types" />
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">wigo.statusapp.incident.IIncident</property>
-  <property name="klass">wigo.statusapp.incident.Incident</property>
+  <property name="schema">wigo.statusapp.maintenance.IMaintenance</property>
+  <property name="klass">wigo.statusapp.maintenance.Maintenance</property>
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
-  </property>
+     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
+   </property>
 
   <!-- View information -->
   <property name="link_target"></property>

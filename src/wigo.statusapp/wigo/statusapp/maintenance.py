@@ -18,32 +18,38 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from wigo.statusapp import MessageFactory as _
 
 
-class IIncident(form.Schema, IImageScaleTraversable):
+class StartBeforeEnd(Invalid):
+    __doc__ = _(u"The start or end date is invalid")
+
+
+class IMaintenance(form.Schema, IImageScaleTraversable):
     """
-    A single incident containing status information
+    Scheduled maintenance timeframe and notifications
     """
-    title = schema.TextLine(
-        title=_(u"Incident Name"),
-        required=True,
-    )
-    status = schema.Choice(
-        title=_(u"Component Status"),
-        description=_(u"Switch component status to signal outages on the "
-                      u"public status page."),
-        vocabulary=u"wigo.statusapp.IncidentType",
-        default='operational',
-        required=True,
+    start = schema.Datetime(
+        title=_(u"Start date"),
+        required=False,
     )
 
+    end = schema.Datetime(
+        title=_(u"End date"),
+        required=False,
+    )
 
-class Incident(Container):
-    grok.implements(IIncident)
+    @invariant
+    def validateStartEnd(data):
+        if data.start is not None and data.end is not None:
+            if data.start > data.end:
+                raise StartBeforeEnd(
+                    _(u"The start date must be before the end date."))
 
-    # Add your class methods and properties here
+
+class Maintenance(Container):
+    grok.implements(IMaintenance)
     pass
 
 
 class View(grok.View):
-    grok.context(IIncident)
+    grok.context(IMaintenance)
     grok.require('zope2.View')
     grok.name('view')

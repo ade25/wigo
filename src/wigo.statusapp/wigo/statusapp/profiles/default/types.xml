@@ -8,6 +8,7 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="wigo.statusapp.maintenance" meta_type="Dexterity FTI" />
   <object name="wigo.statusapp.incidentrecord" meta_type="Dexterity FTI" />
   <object name="wigo.statusapp.incident" meta_type="Dexterity FTI" />
   <object name="wigo.statusapp.incidentmanager" meta_type="Dexterity FTI" />
