@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="wigo.statusapp">
+<body>
+
+<metal:main fill-slot="main">
+  <metal:content-core define-macro="main">
+
+  <div class="workspace-window">
+    <div class="workspace-window-header">
+        <a class="btn btn-primary pull-right"
+            i18n:translate=""
+            tal:attributes="href string:${context/absolute_url}/++add++wigo.statusapp.component">
+            Add component</a>
+      <h1>Components</h1>
+    </div>
+
+    <div class="app-page" tal:condition="view/has_components">
+      <tal:block tal:repeat="item view/components">
+        <div class="row"
+            tal:define="uuid item/UID;
+                        data python:view.status_info(uuid)">
+          <div class="col-xs-12 col-sm-3">
+            <div class="h4"
+                tal:attributes="class string:h4 sqa-component-state sqa-component-state-${item/status}"
+                tal:content="item/Title"></div>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <div class="form-group">
+                <tal:block tal:repeat="item data">
+                    <label class="radio-inline"
+                        tal:define="fieldname string:status.${uuid};
+                                    active item/active;
+                                    checked python:active == True and 'checked' or ''">
+                      <input type="radio"
+                        tal:attributes="name fieldname;
+                                        id item/value;
+                                        value item/value;
+                                        checked checked">
+                        <span i18n:translate="" tal:content="item/title">
+                          Operational
+                        </span>
+                    </label>
+                </tal:block>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-1">
+            <a class="app-ws-action"
+                i18n:translate=""
+                tal:attributes="href string:${item/getURL}">
+                edit
+            </a>
+          </div>
+        </div>
+      </tal:block>
+    </div>
+
+    <div class="app-no-data app-no-data-lg"
+        tal:condition="not:view/has_components">
+        <div class="app-sign">&hellip;</div>
+        <h3 class="no-data-title" i18n:translate="">
+            Doooo &ndash; looks like no data around here
+        </h3>
+        <p i18n:translate="">No componentos, companiero. See fo-yo-self, will ya?
+            Nothing to see here, ha?
+        </p>
+        <p i18n:translate="">So what shall we do about this bro?</p>
+        <a tal:attributes="href string:${context/absolute_url}/++add++wigo.statusapp.compontent">
+            Get your stuff together
+            and kickstart this thingy, will ya?
+            jeeeeee-haaaaa&hellip;
+        </a>
+    </div>
+
+  </div>
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
