@@ -16,7 +16,7 @@
             i18n:translate=""
             tal:attributes="href string:${context/absolute_url}/++add++wigo.statusapp.component">
             Add Incident</a>
-      <h1>Incident Management</h1>
+      <h1>Incidents</h1>
     </div>
 
     <div class="app-page" tal:condition="view/has_incidents">
