@@ -18,6 +18,7 @@ from plone.app.contentlisting.interfaces import IContentListing
 from Products.CMFCore.interfaces import IContentish
 from wigo.statusapp.tool import IWigoTool
 from wigo.statusapp.component import IComponent
+from wigo.statusapp.incident import IIncident
 
 from wigo.statusapp import MessageFactory as _
 
@@ -192,6 +193,22 @@ class Components(grok.View):
         item = api.content.get(UID=uuid)
         nodes = item.restrictedTraverse('@@folderListing')()
         return nodes
+
+
+class Incidents(grok.View):
+    grok.context(IStatusApp)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('incidents')
+
+    def update(self):
+        self.has_incidents = len(self.incidents()) > 0
+
+    def incidents(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        items = catalog(object_provides=IIncident.__identifier__,
+                        sort_on='getObjPositionInParent')
+        results = IContentListing(items)
+        return results
 
 
 class ServiceStatusAsJson(grok.View):
