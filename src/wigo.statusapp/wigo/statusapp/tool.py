@@ -3,9 +3,7 @@ import socket
 import requests
 import contextlib
 import smtplib
-from urllib import urlencode
-from urllib2 import urlopen
-from urllib2 import HTTPError
+from datetime import timedelta
 from five import grok
 from plone import api
 from zope.interface import Interface
@@ -71,7 +69,7 @@ class WigoTool(grok.GlobalUtility):
             if r.status_code == requests.codes.ok:
                 return r.json()
 
-    def construct_calendar(events, start=None, end=None):
+    def construct_calendar(self, events, start=None, end=None):
         """Return a dictionary with dates in a given timeframe as keys and the
         actual occurrences for that date for building calendars.
         Long lasting events will occur on every day until their end.
@@ -110,13 +108,12 @@ class WigoTool(grok.GlobalUtility):
             return cal_data
 
         for event in events:
-            acc = IEventAccessor(event)
-            start_date = acc.start.date()
-            end_date = acc.end.date()
+            start_date = event.modified()
+            end_date = start_date
             # day span between start and end + 1 for the initial date
             range_days = (end_date - start_date).days + 1
             for add_day in range(range_days):
-                next_start_date = start_date + timedelta(add_day) # initial = 0
+                next_start_date = start_date + timedelta(add_day)
                 # avoid long loops
                 if start and end_date < start:
                     break  # if the date is completly outside the range
@@ -126,6 +123,7 @@ class WigoTool(grok.GlobalUtility):
                     break  # if date is outside range
 
                 _add_to_cal(cal, event, next_start_date)
+        import pdb; pdb.set_trace( )
         return cal
 
 

@@ -14,6 +14,81 @@ body {
     }
 }
 
+// Placeholder units usable instead of icon font icons
+.app-sign {
+    display: inline-block;
+    .square(@navbar-height);
+    padding: ceil(@line-height-computed / 2);
+    border: ceil(@line-height-computed / 4) solid @gray-lighter;
+    border-radius: floor(@navbar-height / 2);
+    color: @gray-lighter;
+    font-size:f loor(@navbar-height / 2);
+    text-align: center;
+    line-height: 1;
+    &.app-sign-large {
+        .square((@navbar-height * 2));
+        padding: @line-height-computed;
+        border-radius: @navbar-height;
+        font-size: @navbar-height;
+    }
+}
+
+.app-no-data {
+    margin: @line-height-computed 0;
+    padding: ceil(@line-height-computed / 2);
+    border: 1px solid @gray-lighter;
+    color: @gray-light;
+    text-align: center;
+     .app-sign {
+        display: block;
+        .square(@navbar-height);
+        margin:0 auto;
+        padding:ceil(@line-height-computed / 2);
+        border:5px solid @gray-lighter;
+        border-radius:floor(@navbar-height / 2);
+        color:@gray-lighter;
+        font-size:floor(@navbar-height / 2);
+        text-align:center;
+        line-height:1
+    }
+    .no-data-title,
+    .no-data-text,
+    .no-data-btn {
+        margin-top: ceil(@line-height-computed / 2);
+    }
+    .no-data-text {
+        margin-top: ceil(@line-height-computed);
+    }
+    @media (min-width: @screen-sm) {
+        text-align: left;
+        .no-data-sign {
+            margin:0 @line-height-computed;
+        }
+    }
+    &.no-data-panel-error {
+        background: @alert-danger-bg;
+    }
+}
+
+.app-no-data-lg {
+    margin: @line-height-computed;
+    text-align: center;
+    .app-sign {
+        .square(200px);
+        margin:0 auto @line-height-computed;
+        padding:@navbar-height;
+        border:5px solid @gray-lighter;
+        border-radius:200px;
+        color:@gray-lighter;
+        font-size:floor(@font-size-base * 5.75);
+        text-align:center;
+        line-height:1
+    }
+    @media (min-width: @screen-sm) {
+        margin: @navbar-height ceil(@navbar-height * 2.5);
+    }
+}
+
 
 .sqa-container-login form {
     padding: @line-height-computed;

@@ -1,5 +1,7 @@
 from Acquisition import aq_inner
+from dateutil import rrule
 from datetime import datetime
+from datetime import timedelta
 from five import grok
 from plone import api
 
@@ -11,6 +13,7 @@ from plone.app.contentlisting.interfaces import IContentListing
 
 from wigo.statusapp.tool import IWigoTool
 from wigo.statusapp.component import IComponent
+from wigo.statusapp.incidentrecord import IIncidentRecord
 
 
 class StatusView(grok.View):
@@ -45,7 +48,19 @@ class StatusView(grok.View):
     def build_calendar(self):
         tool = getUtility(IWigoTool)
         today = datetime.now()
-        twoweeks = datetime.timedelta(days=14)
+        twoweeks = timedelta(days=14)
         end = today - twoweeks
-        cal = tool.construct_calendar(incidents, today, end)
+        timespan = {}
+        for x in range(14):
+            delta = timedelta(days=x)
+            timespan[x] = today - delta
+        cal = tool.construct_calendar(self.recorded_incidents(), today, end)
         return cal
+
+    def recorded_incidents(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        items = catalog(object_provides=IIncidentRecord.__identifier__,
+                        sort_on='modified',
+                        sort_order='reverse',
+                        limit=50)[:50]
+        return IContentListing(items)

@@ -10,8 +10,6 @@
             <a href="#welcome"
             tal:attributes="href app_url">Dashboard</a>
         </h4>
-        <p><a tal:attributes="href string:${viewlet/portal_url}/logout">
-        </p>
     </div>
 
   <ul class="nav ws-nav bs-docs-sidenav">
@@ -22,7 +20,8 @@
     </li>
 
     <!-- Status Page -->
-    <li><a class="nav-header" href="#css">Status Page</a></li>
+    <li><a class="nav-header" href="#css"
+            tal:attributes="href string:${app_url}/sqa">Status Page</a></li>
     <li><a href="#grid" tal:attributes="href python:app_url + '/@@incidents'">
         Incidents</a>
     </li>
@@ -38,7 +37,8 @@
         Customers</a></li>
     <li><a href="#css-overview" tal:attributes="href python:app_url + '/crm/@@domains'">
         Hosted Domains</a></li>
-    <li><a href="#grid">Statistics</a></li>
+    <li><a href="#grid"
+            tal:attributes="href string:${app_url}/sqa">Statistics</a></li>
 
   </ul>
 </div>

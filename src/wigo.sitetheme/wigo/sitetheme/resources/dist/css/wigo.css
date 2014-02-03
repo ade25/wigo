@@ -11813,6 +11813,7 @@ dd.image-caption
 }
 .sqa-status
 {
+    margin-top: 44px;
     margin-bottom: 50px;
     padding: 22px;
 
@@ -11855,6 +11856,115 @@ body
 .app-navbar-brand > .app-brand-icon
 {
     color: #789eb6;
+}
+.app-sign
+{
+    font-size: f loor(25px);
+    line-height: 1;
+
+    display: inline-block;
+
+    width: 50px;
+    height: 50px;
+    padding: 11px;
+
+    text-align: center;
+
+    color: #eee;
+    border: 6px solid #eee;
+    border-radius: 25px;
+}
+.app-sign.app-sign-large
+{
+    font-size: 50px;
+
+    width: 100px;
+    height: 100px;
+    padding: 22px;
+
+    border-radius: 50px;
+}
+.app-no-data
+{
+    margin: 22px 0;
+    padding: 11px;
+
+    text-align: center;
+
+    color: #999;
+    border: 1px solid #eee;
+}
+.app-no-data .app-sign
+{
+    font-size: 25px;
+    line-height: 1;
+
+    display: block;
+
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 11px;
+
+    text-align: center;
+
+    color: #eee;
+    border: 5px solid #eee;
+    border-radius: 25px;
+}
+.app-no-data .no-data-title,
+.app-no-data .no-data-text,
+.app-no-data .no-data-btn
+{
+    margin-top: 11px;
+}
+.app-no-data .no-data-text
+{
+    margin-top: 22px;
+}
+@media (min-width: 768px)
+{
+    .app-no-data
+    {
+        text-align: left;
+    }
+    .app-no-data .no-data-sign
+    {
+        margin: 0 22px;
+    }
+}
+.app-no-data.no-data-panel-error
+{
+    background: #f2dede;
+}
+.app-no-data-lg
+{
+    margin: 22px;
+
+    text-align: center;
+}
+.app-no-data-lg .app-sign
+{
+    font-size: 92px;
+    line-height: 1;
+
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 22px;
+    padding: 50px;
+
+    text-align: center;
+
+    color: #eee;
+    border: 5px solid #eee;
+    border-radius: 200px;
+}
+@media (min-width: 768px)
+{
+    .app-no-data-lg
+    {
+        margin: 50px 125px;
+    }
 }
 .sqa-container-login form
 {

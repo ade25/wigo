@@ -139,6 +139,61 @@ class View(grok.View):
         return items
 
 
+class Components(grok.View):
+    grok.context(IStatusApp)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('components')
+
+    def update(self):
+        self.has_components = len(self.components()) > 0
+
+    def components(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        items = catalog(object_provides=IComponent.__identifier__,
+                        sort_on='getObjPositionInParent')
+        results = IContentListing(items)
+        return results
+
+    def status_info(self, uuid):
+        vocabulary = self.status_vocabulary()
+        item = api.content.get(UID=uuid)
+        data = []
+        current = getattr(item, 'status', None)
+        for item in vocabulary:
+            info = item
+            active = False
+            if item['value'] == current:
+                active = True
+            info['active'] = active
+            data.append(info)
+        return data
+
+    def prettify_status(self, status):
+        vocabulary = self.status_vocabulary()
+        term = vocabulary.getTerm(status)
+        info = {}
+        info['title'] = term.title
+        info['value'] = term.value
+        return info
+
+    def status_vocabulary(self):
+        context = aq_inner(self.context)
+        registry = getVocabularyRegistry()
+        vocabulary = registry.get(context, 'wigo.statusapp.ComponentStatus')
+        data = []
+        for term in vocabulary:
+            info = {}
+            info['title'] = term.title
+            info['value'] = term.value
+            data.append(info)
+        return data
+
+    def contained_nodes(self, uuid):
+        item = api.content.get(UID=uuid)
+        nodes = item.restrictedTraverse('@@folderListing')()
+        return nodes
+
+
 class ServiceStatusAsJson(grok.View):
     """ Return service status json info
 

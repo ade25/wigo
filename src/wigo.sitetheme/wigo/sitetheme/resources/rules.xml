@@ -17,6 +17,7 @@
 
     <theme href="dist/workspace.html" css:if-content="body.section-ws" />
     <theme href="dist/workspace.html" css:if-content="body.section-sqa" />
+    <theme href="dist/workspace.html" css:if-content="body.section-crm" />
     
     <!-- Rules applying to a standard Plone web page -->
     <rules css:if-content="#visual-portal-wrapper">
