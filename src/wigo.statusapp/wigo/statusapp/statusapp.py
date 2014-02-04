@@ -236,3 +236,21 @@ class ServiceStatusAsJson(grok.View):
         tool = getUtility(IWigoTool)
         status = tool.status(hostname=self.host, service=self.service)
         return status
+
+
+class TransitionState(grok.View):
+    grok.context(IContentish)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('transition-state')
+
+    def render(self):
+        context = aq_inner(self.context)
+        uuid = self.request.get('uuid', '')
+        state = api.content.get_state(obj=context)
+        if state == 'published':
+            api.content.transition(obj=context, transition='retract')
+        else:
+            api.content.transition(obj=context, transition='publish')
+        came_from = api.content.get(UID=uuid)
+        next_url = came_from.absolute_url()
+        return self.request.response.redirect(next_url)

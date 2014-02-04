@@ -43,7 +43,7 @@ class StatusView(grok.View):
 
     def rendering_timestamp(self):
         now = datetime.now()
-        return now
+        return now.isoformat()
 
     def build_calendar(self):
         tool = getUtility(IWigoTool)

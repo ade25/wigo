@@ -25,9 +25,9 @@
             </div>
         </div>
     </div>
-    <div class="sqa-panel">
-        <!-- <pre tal:content="view/build_calendar" />-->
-    </div>
+    <!-- <div class="sqa-panel">
+         <pre tal:content="view/build_calendar" />
+    </div> -->
     <div class="sqa-panel" tal:condition="view/has_components">
       <div class="sqa-component" tal:repeat="item view/available_components">
         <div class="row">

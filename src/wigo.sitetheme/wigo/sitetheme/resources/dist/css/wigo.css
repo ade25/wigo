@@ -11839,6 +11839,14 @@ dd.image-caption
 {
     color: #2fcc66;
 }
+.sqa-component-state-public
+{
+    color: #5cb85c;
+}
+.sqa-component-state-private
+{
+    color: #d9534f;
+}
 .sqa-footer
 {
     margin-top: 50px;

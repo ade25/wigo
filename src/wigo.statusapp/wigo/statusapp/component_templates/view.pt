@@ -10,21 +10,37 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-    <div class="workspace-window">
+    <div class="workspace-window"
+        tal:define="wf_state view/get_workflow_state">
     <div class="workspace-window-header">
         <a class="btn btn-default pull-right"
             tal:attributes="href string:${context/absolute_url}/++add++wigo.statusapp.servernode">
             Add server/node</a>
-      <h2 tal:content="context/Title">Component name</h2>
+        <a class="btn btn-link pull-right"
+            tal:condition="view/is_public_rouster"
+            i18n:translate=""
+            tal:attributes="href string:${context/absolute_url}/@@transition-state?uuid=${context/UID}">
+            Retract from public view</a>
+        <a class="btn btn-link pull-right"
+            tal:condition="not:view/is_public_rouster"
+            i18n:translate=""
+            tal:attributes="href string:${context/absolute_url}/@@transition-state?uuid=${context/UID}">
+            Make component public</a>
+
+      <h2>
+        <span tal:content="context/Title">Component name</span>
+        <small tal:attributes="class string:sqa-component-state sqa-component-state-${wf_state}"
+            tal:content="wf_state"
+            i18n:translate="" />
+      </h2>
     </div>
     <div class="workspace-window-subheader">
       <h3 tal:content="context/Description">Component description</h3>
     </div>
     <div class="workspace-window-body">
-      <p class="lead" i18n:translate="">
-        Components describe service areas that are often composed of several
-        dedicated nodes.
-      </p>
+      <h4 i18n:translate="">
+        Service nodes
+      </h4>
       <div class="row"
          tal:define="nodes context/@@folderListing">
         <tal:block tal:repeat="node nodes">

@@ -1,4 +1,6 @@
+from Acquisition import aq_inner
 from five import grok
+from plone import api
 
 from z3c.form import group, field
 from zope import schema
@@ -39,3 +41,14 @@ class View(grok.View):
     grok.context(IComponent)
     grok.require('zope2.View')
     grok.name('view')
+
+    def is_public_rouster(self):
+        public = False
+        if self.get_workflow_state() is True:
+            public = True
+        return public
+
+    def get_workflow_state(self):
+        context = aq_inner(self.context)
+        state = api.content.get_state(obj=context)
+        return state
