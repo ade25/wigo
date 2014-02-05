@@ -37,6 +37,9 @@ class View(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
+    def update(self):
+        self.has_customers = len(self.customers()) > 0
+
     def customers(self):
         context = aq_inner(self.context)
         items = context.restrictedTraverse('@@folderListing')()

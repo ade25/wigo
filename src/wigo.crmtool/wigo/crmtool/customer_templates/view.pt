@@ -10,9 +10,66 @@
 <metal:main fill-slot="main">
   <metal:content-core define-macro="main">
 
-    <h1 tal:content="context/Title" />
+    <div class="ws-content-page ws-page ws-page-crm">
+        <div class="ws-page-header">
+            <a class="btn btn-primary pull-right"
+                i18n:translate=""
+                tal:attributes="href string:${context/absolute_url}/edit">
+                edit</a>
+            <h1 tal:content="context/Title">Customer Name</h1>
+        </div>
+        <p class="ws-page-lead" tal:condition="context/Description"
+            tal:content="context/Description">
+            Manage clients and hosted domains
+        </p>
+        <hr>
 
-    <div class="alert alert-default">
+        <div class="app-page" id="content-core">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                        <h4 i18n:translate="">Address</h4>
+                    <address>
+                        <span tal:replace="context/street" /><br>
+                        <tal:details tal:condition="context/addressdetails">
+                            <span tal:replace="context/addressdetails" /><br>
+                        </tal:details>
+                        <span tal:replace="context/zipcode" />
+                        <span tal:replace="context/city" /><br>
+                        
+                    </address>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <a tal:condition="context/email"
+                                tal:attributes="href context/email"
+                                tal:content="context/email" />
+                            <br>
+                            <tal:phone tal:condition="context/phone">
+                              <abbr title="Phone">P:</abbr> <span tal:replace="context/phone" />
+                            </tal:phone>
+                            <tal:fax tal:condition="context/fax"><br />
+                              <abbr title="Fax">F:</abbr> <span tal:replace="context/fax" />
+                            </tal:fax>
+                            <tal:fb tal:condition="context/facebook"><br />
+                              <abbr title="Facebook">FB:</abbr> <span tal:replace="context/facebook" />
+                            </tal:fb>
+                            <tal:tw tal:condition="context/twitter"><br />
+                              <abbr title="Twitter">TW:</abbr> <span tal:replace="context/twitter" />
+                            </tal:tw>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div tal:condition="context/text">
+                <h4>Additional Information</h4>
+                <div tal:replace="structure context/text/output" />
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-warning">
         <p>This customer type holds basic address information and may
             later contain notes on communication via discussion items and might 
             carry hosted domains.</p>

@@ -12,35 +12,71 @@
 
     <div class="ws-content-page ws-page ws-page-crm">
         <div class="ws-page-header">
-            <h1 tal:content="context/Title">CRM Tool</h1>
+            <a class="btn btn-primary pull-right"
+                tal:condition="view/has_customers"
+                i18n:translate=""
+                tal:attributes="href string:${context/absolute_url}/++add++wigo.crmtool.customer">
+                Add component</a>
+            <h1> <span tal:content="context/Title">CRM Tool</span>
+            <small i18n:attributes="">
+                Manage clients and hosted domains
+            </small>
+            </h1>
         </div>
-        <p class="ws-page-lead" i18n:attributes="">
-            Manage clients and hosted domains
-        </p>
         <hr>
-        <div class="ws-section ws-page-section">
-            <div class="ws-section-header">
-                <h1>Color codes</h1>
+        <div class="app-page" tal:condition="view/has_customers">
+          <tal:block tal:repeat="item view/customers">
+            <div class="row"
+                tal:define="uuid item/UID">
+              <div class="col-xs-12 col-sm-1">
+                <small tal:content="item/cid">CID</small>
+              </div>
+              <div class="col-xs-12 col-sm-5">
+                <h4 tal:content="item/Title">
+                <a tal:condition="item/email"
+                    tal:attributes="href item/email"
+                    tal:content="item/email" />
+                <small class="text-muted"
+                    tal:condition="not:item/email" i18n:translate="">
+                    No email address available
+                </small>
+              </div>
+              <div class="col-xs-12 col-sm-5">
+                <address>
+                  <span tal:replace="item/street" /><br>
+                  <span tal:replace="item/zipcode" />
+                  <span tal:replace="item/city" />
+                  <tal:phone tal:condition="item/phone"><br>
+                    <abbr title="Phone">P:</abbr> <span tal:replace="item/phone" />
+                  </tal:phone>
+                </address>
+              </div>
+              <div class="col-xs-12 col-sm-1">
+                <a class="app-ws-action"
+                    i18n:translate=""
+                    tal:attributes="href string:${item/getURL}">
+                    edit
+                </a>
+              </div>
             </div>
-            <div class="ws-section-header app-one">
-            <h2>App one</h2>
-          </div>
-          <div class="ws-section-header app-two">
-            <h2>App two</h2>
-          </div>
-          <div class="ws-section-header app-dark">
-            <h2>App dark</h2>
-          </div>
-          <div class="ws-section-header app-darker">
-            <h2>App darker</h2>
-          </div>
-          <div class="ws-section-header app-darkest">
-            <h2>App darkest</h2>
-          </div>
-          <div class="ws-section-header app-blue">
-            <h2>App blue</h2>
-          </div>
+          </tal:block>
         </div>
+
+        <div class="app-no-data app-no-data-lg"
+            tal:condition="not:view/has_customers">
+            <div class="app-sign">&hellip;</div>
+            <h3 class="no-data-title" i18n:translate="">
+                Looks like you do not have any customers
+            </h3>
+            <p i18n:translate="">Good, good, ah - but we believe your business could
+                really benefit from having at least a couple of customers.
+            </p>
+            <p i18n:translate="">Should you ever change your mind:</p>
+            <a tal:attributes="href string:${context/absolute_url}/++add++wigo.crmtool.customer">
+                Create your first customer
+            </a>
+        </div>
+
     </div>
 
   </metal:content-core>
