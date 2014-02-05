@@ -14,8 +14,9 @@
         <div class="ws-page-header">
             <h1 tal:content="context/Title">CRM Tool</h1>
         </div>
-        <p class="ws-page-lead">
-        <p>Icon: <i class="icon-adn icon-2x"></i> <small>25</small>
+        <p class="ws-page-lead" i18n:attributes="">
+            Manage clients and hosted domains
+        </p>
         <hr>
         <div class="ws-section ws-page-section">
             <div class="ws-section-header">

@@ -1,4 +1,6 @@
+from Acquisition import aq_inner
 from five import grok
+from plone import api
 
 from z3c.form import group, field
 from zope import schema
@@ -35,4 +37,7 @@ class View(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
-    # Add view methods here
+    def customers(self):
+        context = aq_inner(self.context)
+        items = context.restrictedTraverse('@@folderListing')()
+        return items
