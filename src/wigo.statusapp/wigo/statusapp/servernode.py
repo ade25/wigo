@@ -27,9 +27,15 @@ class IServerNode(model.Schema, IImageScaleTraversable):
         description=_(u"Enter a fully qualified servername"),
         required=True
     )
+    machine = schema.TextLine(
+        title=_(u"Physical Server"),
+        description=_(u"name of the physical machine this virtual server "
+                      u"is located on"),
+        required=False,
+    )
     protocol = schema.TextLine(
         title=_(u"Request Protocol"),
-        description=_(u"Specify alternative protocol e.g. smtp for mail server"),
+        description=_(u"Specify alternative protocol e.g. smtp for mx server"),
         default=u"http",
         required=True
     )

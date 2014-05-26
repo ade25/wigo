@@ -15,7 +15,7 @@ env.port = '22222'
 env.user = 'root'
 env.hosts = ['wigo']
 env.webserver = '/opt/webserver/buildout.webserver'
-env.code_root = '/opt/wigo/buildout.wigo'
+env.code_root = '/opt/sites/wigo/buildout.wigo'
 env.local_root = '/Users/cb/dev/wigo/buildout.wigo'
 env.sitename = 'wigo'
 env.code_user = 'root'
@@ -23,20 +23,18 @@ env.prod_user = 'www'
 
 
 @task
-def supervisorctl(*cmd):
+def ctl(*cmd):
     """Runs an arbitrary supervisorctl command."""
     with cd(env.webserver):
         run('bin/supervisorctl ' + ' '.join(cmd))
 
 
-@task
 def deploy():
     """ Deploy current master to production server """
-    project.site.update()
-    project.site.restart_zope()
+    execute(project.site.update())
+    execute(project.site.restart_zope())
 
 
-@task
 def deploy_full():
     """ Deploy current master to production and run buildout """
     project.site.update()
@@ -44,7 +42,6 @@ def deploy_full():
     project.site.restart_zope()
 
 
-@task
 def rebuild():
     """ Deploy current master and run full buildout """
     project.site.update()
