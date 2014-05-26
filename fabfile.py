@@ -15,7 +15,7 @@ env.port = '22222'
 env.user = 'root'
 env.hosts = ['wigo']
 env.webserver = '/opt/webserver/buildout.webserver'
-env.code_root = '/opt/sites/wigo/buildout.wigo'
+env.code_root = '/opt/wigo/buildout.wigo'
 env.local_root = '/Users/cb/dev/wigo/buildout.wigo'
 env.sitename = 'wigo'
 env.code_user = 'root'
@@ -29,6 +29,7 @@ def ctl(*cmd):
         run('bin/supervisorctl ' + ' '.join(cmd))
 
 
+@task
 def deploy():
     """ Deploy current master to production server """
     execute(project.site.update())
