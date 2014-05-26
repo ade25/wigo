@@ -27,6 +27,10 @@ class IServerNode(model.Schema, IImageScaleTraversable):
         description=_(u"Enter a fully qualified servername"),
         required=True
     )
+    ip = schema.TextLine(
+        title=_(u"IP Address"),
+        required=False,
+    )
     machine = schema.TextLine(
         title=_(u"Physical Server"),
         description=_(u"name of the physical machine this virtual server "
