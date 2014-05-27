@@ -122,6 +122,13 @@ module.exports = function (grunt) {
                 src: ['font-awesome/fonts/*'],
                 dest: 'dist/assets/fonts/'
             },
+            fira: {
+                expand: true,
+                flatten: true,
+                cwd: 'bower_components/',
+                src: ['fira/eot/*', 'fira/otf/*', 'fira/ttf/*', 'fira/woff/*'],
+                dest: 'dist/assets/fonts/'
+            },
             ico: {
                 expand: true,
                 flatten: true,
@@ -179,8 +186,8 @@ module.exports = function (grunt) {
             },
             'clean-source-js': {
                 path: 'dist/',
-                pattern: '../dist/js/rms.js',
-                replacement: 'js/rms.min.js',
+                pattern: '../dist/js/wigo.js',
+                replacement: 'js/wigo.min.js',
                 recursive: true
             }
         },

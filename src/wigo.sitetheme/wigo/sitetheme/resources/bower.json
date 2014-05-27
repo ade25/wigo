@@ -15,7 +15,8 @@
     "animate.css": "~3.0.0",
     "holderjs": "~2.1.0",
     "momentjs": "~2.2.1",
-    "livestampjs": "~1.1.2"
+    "livestampjs": "~1.1.2",
+    "fira": "git@github.com:mozilla/Fira.git#master"
   },
   "devDependencies": {
     "chai": "1.7.2"
