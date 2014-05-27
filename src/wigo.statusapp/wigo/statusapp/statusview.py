@@ -113,7 +113,8 @@ class RosterStatus(grok.View):
         return self.is_equal(stored_token, token)
 
     def nodes(self):
-        context = api.content.get(path='/sqa/hosted-pages')
+        portal = api.portal.get()
+        context = portal['sqa']['hosted-pages']
         catalog = api.portal.get_tool(name='portal_catalog')
         items = catalog(object_provides=IServerNode.__identifier__,
                         path=dict(query='/'.join(context.getPhysicalPath()),
