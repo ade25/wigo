@@ -13,12 +13,9 @@
   <div class="workspace-window"
     tal:condition="view/valid_request">
     <div class="workspace-window-subheader">
-      <h3>Component Roster</h3>
+      <h1>Component Roster</h1>
     </div>
     <div class="workspace-window-body">
-      <h4 i18n:translate="">
-        Nodes
-      </h4>
       <div class="row"
         tal:condition="view/has_contents"
          tal:define="nodes view/nodes">
@@ -28,6 +25,50 @@
                 <div class="infobox">
                   <h2 tal:content="node/Title" />
                   <h6 tal:content="node/server" />
+                  <table class="table table-condensed"
+                    tal:condition="node/serverdetails">
+                    <tbody tal:define="details node/serverdetails;
+                                       sites details/sites;
+                                       sites_idx python:len(sites)">
+                      <tr tal:condition="node/ip">
+                        <th i18n:translate="">IP</th>
+                        <td tal:content="node/ip" />
+                      </tr>
+                      <tr tal:condition="not:node/ip">
+                        <th i18n:translate="">IP</th>
+                        <td i18n:translate="">Unknown</td>
+                      </tr>
+                      <tr>
+                        <th i18n:translate="">Nginx</th>
+                        <td tal:condition="exists:details/nginx"
+                          tal:content="details/nginx" />
+                        <td tal:condition="not:exists:details/nginx" i18n:translate="">
+                          no value
+                        </td>
+                      </tr>
+                      <tr>
+                        <th i18n:translate="">Varnish</th>
+                        <td tal:condition="exists:details/varnish"
+                          tal:content="details/varnish" />
+                        <td tal:condition="not:exists:details/varnish" i18n:translate="">
+                          no value
+                        </td>
+                      </tr>
+                      <tr>
+                        <th i18n:translate="">HAProxy</th>
+                        <td class="text-left"
+                          tal:condition="exists:details/haproxy"
+                          tal:content="details/haproxy" />
+                        <td tal:condition="not:exists:details/haproxy" i18n:translate="">
+                          no value
+                        </td>
+                      </tr>
+                      <tr tal:condition="sites">
+                        <th i18n:translate="">Sites</th>
+                        <td tal:content="sites_idx" />
+                      </tr>
+                    </tbody>
+                  </table>
                   <p><a href="" tal:attributes="href node/getURL">Details</a></p>
                 </div>
               </div>
