@@ -1,3 +1,4 @@
+import json
 import socket
 from Acquisition import aq_inner
 from datetime import datetime
@@ -122,6 +123,10 @@ class RosterStatus(grok.View):
                         sort_on='getObjPositionInParent')
         results = IContentListing(items)
         return results
+
+    def node_details(self, node):
+        data = getattr(node, 'serverdetails')
+        return json.loads(data)
 
     def resolve_node_ip(self, node):
         nodename = getattr(node, 'server')
