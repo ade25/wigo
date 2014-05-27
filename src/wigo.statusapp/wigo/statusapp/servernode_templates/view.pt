@@ -24,7 +24,7 @@
         The actual content panel filled with context specific information
       </p>
       <div class="row"
-         tal:define="details context/serverdetails">
+         tal:define="details view/details">
         <div class="col-xs-12 col-sm-3">
           <div class="infoboxes">
             <div class="infobox">
@@ -32,12 +32,50 @@
               <h6 tal:content="context/server" />
             </div>
           </div>
+          <tal:serverinfo tal:condition="view/has_server_info">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 text-left">
+                <strong i18n:translate="">Nginx</strong>
+              </div>
+              <div class="col-xs-12 col-sm-8 text-right">
+                <span tal:condition="details/nginx"
+                  tal:replace="details/nginx" />
+                <span class="text-muted"
+                  tal:condition="not:details/nginx"
+                  i18n:translate="">not provided</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 text-left">
+                <strong i18n:translate="">Varnish</strong>
+              </div>
+              <div class="col-xs-12 col-sm-8 text-right">
+                <span tal:condition="details/varnish"
+                  tal:replace="details/varnish" />
+                <span class="text-muted"
+                  tal:condition="not:details/varnish"
+                  i18n:translate="">not provided</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-4 text-left">
+                <strong i18n:translate="">HAProxy</strong>
+              </div>
+              <div class="col-xs-12 col-sm-8 text-right">
+                <span tal:condition="details/haproxy"
+                  tal:replace="details/haproxy" />
+                <span class="text-muted"
+                  tal:condition="not:details/haproxy"
+                  i18n:translate="">not provided</span>
+              </div>
+            </div>
+          </tal:serverinfo>
         </div>
         <div class="col-xs-12 col-sm-9"
             tal:condition="python:protocol == 'http'">
           <table class="table table-condensed"
             tal:condition="context/serverdetails">
-            <tbody tal:define="details context/serverdetails">
+            <tbody tal:define="details view/details">
               <tr tal:repeat="site details/sites">
                 <th><span tal:replace="site/title" /></th>
                 <td class="text-left"

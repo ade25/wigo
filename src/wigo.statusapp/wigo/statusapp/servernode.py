@@ -1,5 +1,4 @@
 import json
-import urllib2
 from Acquisition import aq_inner
 from five import grok
 
@@ -63,6 +62,17 @@ class View(grok.View):
     grok.require('zope2.View')
     grok.name('view')
 
+    def details(self):
+        context = aq_inner(self.context)
+        data = getattr(context, 'serverdetails')
+        return json.loads(data)
+
+    def has_server_info(self):
+        data = self.details()
+        if 'nginx' in data.keys():
+            return True
+        return False
+
     def check_server_status(self):
         host = getattr(self.context, 'server')
         protocol = getattr(self.context, 'protocol', 'http')
@@ -82,7 +92,7 @@ class ServerDetails(grok.View):
         hostname = getattr(context, 'server', '')
         if hostname is not None:
             data = tool.get(hostname=hostname)
-            setattr(context, 'serverdetails', data)
+            setattr(context, 'serverdetails', json.dumps(data))
             modified(context)
             context.reindexObject(idxs='modified')
             IStatusMessage(self.request).addStatusMessage(
