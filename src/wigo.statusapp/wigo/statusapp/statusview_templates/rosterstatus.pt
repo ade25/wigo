@@ -25,22 +25,22 @@
                 <div class="infobox">
                   <h2 tal:content="node/Title" />
                   <h6 tal:content="node/server" />
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-4 text-left">
+                      <strong i18n:translate="">IP</strong>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 text-right">
+                      <span tal:condition="node/ip"
+                        tal:replace="node/ip" />
+                      <span class="text-muted"
+                        tal:condition="not:node/ip"
+                        i18n:translate="">not provided</span>
+                    </div>
+                  </div>
                   <div tal:condition="node/serverdetails">
                     <tal:details tal:define="details python:view.node_details(node);
                                              sites details/sites;
                                              sites_idx python:len(sites)">
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-4 text-left">
-                          <strong i18n:translate="">IP</strong>
-                        </div>
-                        <div class="col-xs-12 col-sm-8 text-right">
-                          <span tal:condition="node/ip"
-                            tal:replace="node/ip" />
-                          <span class="text-muted"
-                            tal:condition="not:node/ip"
-                            i18n:translate="">not provided</span>
-                        </div>
-                      </div>
                       <div class="row" tal:condition="sites">
                         <div class="col-xs-12 col-sm-4 text-left">
                           <strong i18n:translate="">Sites</strong>
