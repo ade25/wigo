@@ -274,7 +274,7 @@ class BuildClusterInfo(grok.View):
     grok.require('cmf.ModifyPortalContent')
     grok.name('build-cluster-info')
 
-    def get_components(self):
+    def get_servernodes(self):
         catalog = api.portal.get_tool(name='portal_catalog')
         items = catalog(object_provides=IServerNode.__identifier__,
                         sort_on='getObjPositionInParent')
@@ -308,7 +308,7 @@ class BuildClusterInfo(grok.View):
         return info
 
     def get_items(self):
-        results = self.get_components()
+        results = self.get_servernodes()
         items = []
         for r in results:
             item = self.get_item_data(r)
