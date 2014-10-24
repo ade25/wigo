@@ -1,0 +1,114 @@
+{
+  "id": "${id}",
+  "uid": "${uid}",
+  "timestamp": "${timestamp}",
+  "_runtime": "0.0000059604644775390625",
+  "created": "${created}",
+  "dashboard": "${dashboard}",
+  "project": ${project},
+  "items": [
+    {
+      "id": "xd-1",
+      "uid": "${xd1uid}",
+      "kind": "tracking",
+      "title": "Tracking report",
+      "description": "This data table shows a list of tasks along with the execution date and person responsible at the time",
+      "dataTable": {
+        "cols": [
+          {"type": "date", "id":   "xd:trackingDate", "label": "Tracking Date"},
+          {"type": "string", "id": "xd:trackingUserId", "label": "Tracking User ID"},
+          {"type": "string", "id": "xd:trackingSummary", "label": "Summary"},
+          {"type": "number", "id": "xd:trackingValue", "label": "Hours"}
+        ],
+        "rows": []
+      }
+    },
+    {
+      "id": "xd-2",
+      "uid": "${xd2uid}",
+      "kind": "builtLinks",
+      "title": "Built Links",
+      "description": "This data table containes build links including the corresponding landing pages",
+      "dataTable": {
+        "cols": [
+          {"type": "string", "id": "xd:linkDate", "label": "Link Date"},
+          {"type": "string", "id": "xd:linkSourceURI", "label": "Link Source URI"},
+          {"type": "string", "id": "xd:linkTargetURI", "label": "Link Target URI"},
+          {"type": "string", "id": "xd:linkText", "label": "Link Text"}
+        ],
+        "rows": []
+      }
+    },
+    {
+      "id": "xd-3",
+      "uid": "${xd3uid}",
+      "kind": "focusKeywords",
+      "title": "Focus Keywords",
+      "description": "This most important keywords in relation to volume and reach",
+      "dataTable": {
+        "cols": [],
+        "rows": []
+      }
+    },
+    {
+      "id": "xd-4",
+      "uid": "${xd4uid}",
+      "kind": "winnerKeywords",
+      "title": "Winner Keywords",
+      "description": "This most important keywords in relation to volume and reach",
+      "dataTable": {
+        "cols": [],
+        "rows": []
+      }
+    },
+    {
+      "id": "xd-5",
+      "uid": "${xd5uid}",
+      "kind": "looserKeywords",
+      "title": "Looser Keywords",
+      "description": "This most important keywords in relation to volume and reach",
+      "dataTable": {
+        "cols": [],
+        "rows": []
+      }
+    },
+    {
+      "id": "xd-6",
+      "uid": "${xd6uid}",
+      "kind": "seoTraffic",
+      "title": "SEO Traffic",
+      "description": "This data table shows relevant metrics built from Google Analytics data.",
+      "dataTable": {
+        "cols": [
+            {"type": "string", "id": "ga:keyword", "label": "ga:keyword"},
+            {"type": "number", "id": "ga:sessions", "label": "ga:sessions"},
+            {"type": "number", "id": "ga:pageviews", "label": "ga:pageviews"},
+            {"type": "number", "id": "ga:pageviewsPerSession", "label": "ga:pageviewsPerSession"},
+            {"type": "time", "id": "ga:sessionDuration", "label": "ga:sessionDuration"},
+            {"type": "percent", "id": "ga:percentNewSessions", "label": "ga:percentNewSessions"},
+            {"type": "percent", "id": "ga:exitRate", "label": "ga:exitRate"}
+        ],
+        "rows": []
+      }
+    },
+    {
+      "id": "xd-7",
+      "uid": "${xd7uid}",
+      "kind": "referralTraffic",
+      "title": "Referral Traffic",
+      "description": "This data table shows relevant traffic originating from link sources",
+      "dataTable": {
+        "cols": [
+            {"type": "string", "id": "ga:source", "label": "ga:source"},
+            {"type": "number", "id": "ga:sessions", "label": "ga:sessions"},
+            {"type": "number", "id": "ga:pageviews", "label": "ga:pageviews"},
+            {"type": "number", "id": "ga:pageviewsPerSession", "label": "ga:pageviewsPerSession"},
+            {"type": "time", "id": "ga:sessionDuration", "label": "ga:sessionDuration"},
+            {"type": "percent", "id": "ga:percentNewSessions", "label": "ga:percentNewSessions"},
+            {"type": "percent", "id": "ga:exitRate", "label": "ga:exitRate"}
+        ],
+        "rows": []
+      }
+    }
+  ]
+}
