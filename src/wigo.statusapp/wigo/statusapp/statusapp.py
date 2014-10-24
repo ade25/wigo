@@ -25,6 +25,7 @@ from zope.schema.vocabulary import getVocabularyRegistry
 
 from wigo.statusapp.tool import IWigoTool
 from wigo.statusapp.component import IComponent
+from wigo.statusapp.servernode import IServerNode
 from wigo.statusapp.incident import IIncident
 
 from wigo.statusapp import MessageFactory as _
@@ -275,7 +276,7 @@ class BuildClusterInfo(grok.View):
 
     def get_components(self):
         catalog = api.portal.get_tool(name='portal_catalog')
-        items = catalog(object_provides=IComponent.__identifier__,
+        items = catalog(object_provides=IServerNode.__identifier__,
                         sort_on='getObjPositionInParent')
         return items
 
