@@ -1,21 +1,24 @@
+# -*- coding: utf-8 -*-
+"""Module providing status app overview and cluster storage"""
+
 import json
+
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
+from Products.CMFCore.interfaces import IContentish
+from Products.CMFPlone.utils import safe_unicode
 from five import grok
 from plone import api
-
-from zope.component import getUtility
-from zope.component import getMultiAdapter
-from plone.keyring import django_random
-from zope.schema.vocabulary import getVocabularyRegistry
-
+from plone.app.contentlisting.interfaces import IContentListing
 from plone.dexterity.content import Container
+from plone.keyring import django_random
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.supermodel import model
+from zope import schema
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.schema.vocabulary import getVocabularyRegistry
 
-from Products.CMFPlone.utils import safe_unicode
-from plone.app.contentlisting.interfaces import IContentListing
-from Products.CMFCore.interfaces import IContentish
 from wigo.statusapp.tool import IWigoTool
 from wigo.statusapp.component import IComponent
 from wigo.statusapp.incident import IIncident
@@ -27,6 +30,11 @@ class IStatusApp(model.Schema, IImageScaleTraversable):
     """
     A collection of server status information
     """
+    cluster = schema.TextLine(
+        title=_(u"Cluster"),
+        description=_(u"Automatically updated server cluster information"),
+        required=False,
+    )
 
 
 class StatusApp(Container):
