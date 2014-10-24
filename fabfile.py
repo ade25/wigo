@@ -29,7 +29,6 @@ def ctl(*cmd):
         run('bin/supervisorctl ' + ' '.join(cmd))
 
 
-@task
 def deploy():
     """ Deploy current master to production server """
     execute(project.site.update())

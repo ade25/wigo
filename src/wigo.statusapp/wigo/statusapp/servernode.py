@@ -81,6 +81,19 @@ class View(grok.View):
         return status
 
 
+class JSONView(grok.View):
+    grok.context(IServerNode)
+    grok.require('zope2.View')
+    grok.name('json-view')
+
+    def render(self):
+        context = aq_inner(self.context)
+        data = getattr(context, 'serverdetails')
+        report = json.loads(data)
+        self.request.response.setHeader("Content-Type", "application/json")
+        return json.dumps(report)
+
+
 class ServerDetails(grok.View):
     grok.context(IServerNode)
     grok.require('cmf.ModifyPortalContent')
