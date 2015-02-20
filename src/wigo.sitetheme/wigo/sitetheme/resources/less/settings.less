@@ -48,10 +48,14 @@
 @headings-font-weight:    400;
 
 // Set custom font awesome path
-@fa-font-path:          "../../assets/fonts";
-@ionicons-font-path:    "../../assets/fonts";
+@fa-font-path:          "../assets/fonts";
+@ionicons-font-path:    "../assets/fonts";
 
 
+
+//== Navbar
+@navbar-height:                     75px;
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-border-radius:      0;
 @navbar-inverse-bg:         @cu-black;
 
@@ -74,7 +78,7 @@
 @font-size-h5:            @font-size-base;
 @font-size-h6:            0.85 + @font-unit;
 
-@line-height-computed:    (@font-size-base * @line-height-base);
+@line-height-computed:    (@font-size-root * @line-height-base);
 
 @padding-base-vertical:     ((6px / @font-size-root) + @font-unit);
 @padding-base-horizontal:   ((12px / @font-size-root) + @font-unit);

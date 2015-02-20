@@ -16,7 +16,7 @@
 }
 
 .ws-sidebar-heading {
-  margin: 0 0 25px;
+  margin: @line-height-computed 0 25px;
 }
 .ws-sidebar-heading a {
   display: block;
@@ -49,7 +49,10 @@
 .ws-sidebar .nav > li > a {
   display: block;
   color: #666;
-  padding: ceil((@line-height-computed / 2)) @line-height-computed;
+  padding: 5px @line-height-computed;
+  &.nav-header {
+    padding: ceil((@line-height-computed / 2)) @line-height-computed;
+  }
 }
 .ws-sidebar .nav > li > a:hover,
 .ws-sidebar .nav > li > a:focus {
@@ -66,19 +69,19 @@
 }
 
 /* Nav: second level (shown on .active) */
-.bs-docs-sidebar .nav .nav {
-  display: none;
-  margin-bottom: 5px;
-}
-.bs-docs-sidebar .nav > .active > ul {
-  display: block;
-}
-.bs-docs-sidebar .nav .nav > li > a {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 40px;
-  font-size: 90%;
-}
+// .bs-docs-sidebar .nav .nav {
+//   display: none;
+//   margin-bottom: 5px;
+// }
+// .bs-docs-sidebar .nav > .active > ul {
+//   display: block;
+// }
+// .bs-docs-sidebar .nav .nav > li > a {
+//   padding-top: 2px;
+//   padding-bottom: 2px;
+//   padding-left: 40px;
+//   font-size: 90%;
+// }
 
 /* Section headings for groups of links */
 .bs-docs-sidenav > li > .nav-header {
