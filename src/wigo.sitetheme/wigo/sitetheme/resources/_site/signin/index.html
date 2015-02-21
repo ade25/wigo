@@ -33,50 +33,64 @@
     <a class="sr-only" href="#content">Skip navigation</a>
     <div class="app-simple">
     <div class="container" role="main">
-        <main class="app-content-body">
-  <div class="container">
-    <section class="app-signin" id="app-signin">
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="page-aside">
-                    <h1>WigoApp</h1>
-                </div>
+        <main class="app-signin-wrapper">
+  <section class="app-signin page page-signin">
+    <article class="page-content" id="app-signin-content">
+      <header class="app-signin-header">
+          <div class="app-signin-header-content">
+              <h1 class="app-signin-title">
+                <i class="ion ion-ios7-circle-filled app-brand-icon"></i> WigoApp
+                  <small>Anmelden</small>
+              </h1>
+          </div>
+      </header>
+      <div class="app-signin-content page-body" id="app-signin-body">
+        <form class="app-signin-form enableAutoFocus" action="." id="login_form" method="post">
+          <div class="app-signin-group" id="login-form">
+            <div class="control-group app-signin-control">
+              <div class="app-signin-field">
+              <label for="__ac_name">E-Mail-Adresse</label>
+              <input class="form-control" type="text" id="__ac_name" value="" name="__ac_name" size="15">
+              </div>
             </div>
-            <div class="col-xs-12 col-md-6">
-                <section class="page page-signin">
-                    <article class="page-content" id="app-signin-content">
-                        <header class="page-header">
-                            <h2>
-                                Anmelden
-                            </h2>
-                        </header>
-                        <form class="enableAutoFocus" action="." id="login_form" method="post">
-                            <div id="login-form">
-                                <div class="field">
-                                    <label for="__ac_name">E-Mail-Adresse</label>
-                                    <input type="text" id="__ac_name" value="" name="__ac_name" size="15">
-                                </div>
-                                <div class="field">
-                                        <label for="__ac_password">Passwort</label>
-                                        <input type="password" id="__ac_password" name="__ac_password" size="15">
-                                </div>
-                                <div class="formControls text-right">
-                                    <a class="btn btn-link btn-sm" href="/mail_password_form?userid=">Passwort vergessen?</a>
-                                    <input type="submit" value="Anmelden" name="submit" class="btn btn-primary btn-lg">
-                                </div>
-                            </div>
-                        </form>
-                    </article>
-                </section>
+            <div class="control-group app-signin-control">
+              <div class="app-signin-field">
+                <label for="__ac_password">Passwort</label>
+                <input  class="form-control" type="password" id="__ac_password" name="__ac_password" size="15">
+              </div>
             </div>
-        </div>
-    </section>
-  </div>
+          </div>
+          <div class="app-signin-actions">
+            <div class="control-group">
+              <input class="btn btn-primary btn-lg" type="submit" value="Anmelden" name="submit">
+              <a class="btn btn-link btn-sm" href="/mail_password_form?userid=">Passwort vergessen?</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </article>
+  </section>
 </main>
     </div>
     </div>
     <script type="text/javascript">
 function downloadJSAtOnload(){var a=document.createElement("script");a.src="../js/wigo.min.js",document.body.appendChild(a)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
 </script>
+    <div class="app-js-slot">
+        <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Fira+Sans:300,400,500,700,300italic,400italic:latin', 'Lato:300,400,700:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+  </script>
+    </div>
 </body>
 </html>
