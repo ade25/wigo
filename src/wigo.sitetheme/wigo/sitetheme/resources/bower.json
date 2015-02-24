@@ -15,6 +15,7 @@
     "momentjs": "~2.2.1"
   },
   "devDependencies": {
-    "chai": "1.7.2"
+    "chai": "1.7.2",
+    "ionicons": "~2.0.1"
   }
 }

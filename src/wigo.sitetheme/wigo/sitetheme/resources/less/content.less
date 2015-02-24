@@ -18,3 +18,22 @@
 .app-page-body-section {
     margin-bottom: ceil((@line-height-computed * 2));
 }
+
+//== Content grid
+//
+//## 2:1 column matrix
+.app-page-section {
+  .make-row();
+}
+
+.app-page-aside {
+  .make-md-column(4);
+}
+
+.app-page-main {
+  .make-md-column(8);
+}
+
+.app-page-block {
+  padding: @line-height-computed 0;
+}

@@ -1,0 +1,33 @@
+//
+// Brandbar
+// --------------------------------------
+
+.app-brandbar {
+  min-height: ceil((@navbar-height * 2));
+  padding: ceil((@line-height-computed * 2)) @line-height-computed;
+  background: @cu-black;
+}
+
+.app-brand {
+  .container();
+}
+
+.app-brandname {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: darken(#fff, 10%);
+  &:hover {
+    color: #fff;
+  }
+}
+
+.app-brandname-aside {
+  color: @sqa-operational;
+  font-size: 1.5rem;
+}
+
+.app-brand-text {
+  color: darken(#fff, 10%);
+  text-transform: uppercase;
+}

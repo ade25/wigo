@@ -1,0 +1,42 @@
+//
+// Statusbar
+// ------------------------------
+
+
+.app-statusbar {
+  padding-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
+}
+
+.app-status {
+  .container();
+  border-bottom: 1px solid @cu-black;
+}
+
+// Make grid row
+.sq-list {
+  .make-row();
+}
+
+.sq-icon {
+  .make-md-column(2);
+  font-size: 6rem;
+  color: @sqa-operational;
+  text-align: center;
+}
+
+.sq-info {
+  .make-md-column(6);
+  text-align: center;
+  @media (min-width: @screen-sm-min) {
+    text-align: left;
+  }
+}
+
+.sq-actions {
+  .make-md-column(4);
+  text-align: center;
+  @media (min-width: @screen-sm-min) {
+    text-align: right;
+  }
+}
