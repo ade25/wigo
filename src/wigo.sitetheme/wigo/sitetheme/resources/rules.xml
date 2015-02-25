@@ -124,7 +124,12 @@
         <replace css:content-children="#ws-sidebar"
                 css:theme-children="#ws-sidebar" />
 
-        <drop theme="/html/body/script" />
+        <!-- Control panel -->
+        <replace css:content=".configlets">
+            <ul class="nav nav-list xcheckbox clearfix">
+                <xsl:apply-templates />
+            </ul>
+        </replace>
 
     </rules>
 
