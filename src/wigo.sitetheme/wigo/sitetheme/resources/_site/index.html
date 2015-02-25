@@ -32,15 +32,22 @@
   <body class="app-theme-default">
     <a class="sr-only" href="#content">Skip navigation</a>
     <div class="app-brandbar">
-    <div class="app-brand">
-        <a href="#" class="app-brandname">
-            <i class="ion ion-ios-circle-filled app-brand-icon"></i>
-            Ade25
-        </a>
-        <small class="app-brandname-aside">Status</small>
-        <p class="app-brand-text">
-          made by Kreativkombinat
-        </p>
+    <div class="app-brandbar-content">
+        <div class="app-brand">
+            <div class="app-brand-main">
+                <a href="#" class="app-brandname">
+                    <i class="ion ion-ios-circle-filled app-brand-icon"></i>
+                    Ade25
+                </a>
+                <small class="app-brandname-aside">Status</small>
+                <p class="app-brand-text">
+                  made by Kreativkombinat
+                </p>
+            </div>
+            <div class="app-brand-aside">
+                <div class="app-brandname-aside">Status</div>
+            </div>
+        </div>
     </div>
 </div>
     <div class="app-statusbar">
@@ -60,11 +67,11 @@
                 </p>
             </div>
             <div class="sq-actions">
-                <p class="sqa-status-timestamp">Aktualisiert vor 14 Minuten</p>
-                <a href="..//open-ticket">
+                <a class="sq-action sq-action-btn" href="..//open-ticket">
                     <i class="ion ion-ios-reload"></i>
                     reload
                 </a>
+                <p class="sqa-status-timestamp">Aktualisiert vor 14 Minuten</p>
             </div>
         </div>
     </div>
@@ -73,71 +80,7 @@
         <div class="app-content-body">
   <div class="app-page" id="content">
     <div class="app-page-section">
-        <div class="app-page-main">
-            <div class="app-page-header">
-                <h3>Status History</h3>
-                <p class="app-page-abstract">
-                    If you are experiencing any issues please
-                    <a href="..//open-ticket">
-                    open a support ticket.</a>
-                </p>
-            </div>
-            <div class="app-page-block incident-list">
-                <div class="status-day no-incidents">
-                    <div class="h4 date">Feb 23, 2015</div>
-                    <p class="text-muted">No incidents reported today.</p>
-                </div>
-                <div class="status-day no-incidents">
-                    <div class="h4 date">Feb 22, 2015</div>
-                    <p class="text-muted">No incidents reported today.</p>
-                </div>
-                <div class="status-day no-incidents">
-                    <div class="h4 date">Feb 21, 2015</div>
-                    <p class="text-muted">No incidents reported today.</p>
-                </div>
-                <div class="status-day no-incidents">
-                    <div class="h4 date">Feb 20, 2015</div>
-                    <div class="incident-container">
-                      <div class="h5 incident-title impact-minor">
-                        <a href="/incidents/dsdcx050x53z">JavaScript issues on Web Application</a>
-                      </div>
-
-                        <div class="updates-container">
-                            <div class="update font-regular resolved">
-                                <strong>Resolved</strong> -
-                                The issue causing JavaScript errors has been resolved and the application should be operating normally. We will continue to monitor the situation.
-                              <br>
-                              <small>
-                                  Feb 10, 16:56 PST
-                              </small>
-                            </div>
-                            <div class="update font-regular identified">
-                                <strong>Identified</strong> -
-                                A recent deploy has caused JavaScript errors to occur on the site. We are working to resolve this as quickly as possible.
-                              <br>
-                              <small>
-                                  Feb 10, 16:34 PST
-                              </small>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="status-day no-incidents">
-                    <div class="h4 date">Feb 19, 2015</div>
-                    <p class="text-muted">No incidents reported today.</p>
-                </div>
-                <div class="status-day no-incidents">
-                    <div class="h4 date">Feb 18, 2015</div>
-                    <p class="text-muted">No incidents reported today.</p>
-                </div>
-                <div class="status-day no-incidents">
-                    <div class="h4 date">Feb 17, 2015</div>
-                    <p class="text-muted">No incidents reported today.</p>
-                </div>
-            </div>
-        </div>
-        <div class="app-page-aside">
+         <div class="app-page-aside">
             <div class="sqa-panel">
                 <div class="sqa-component">
                   <div class="row">
@@ -264,6 +207,70 @@
                             Webapplications and Services</p>
                       </div>
                   </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-page-main">
+            <div class="app-page-header">
+                <h3>Status History</h3>
+                <p class="app-page-abstract">
+                    If you are experiencing any issues please
+                    <a href="..//open-ticket">
+                    open a support ticket.</a>
+                </p>
+            </div>
+            <div class="app-page-block incident-list">
+                <div class="status-day no-incidents">
+                    <div class="h4 date">Feb 23, 2015</div>
+                    <p class="text-muted">No incidents reported today.</p>
+                </div>
+                <div class="status-day no-incidents">
+                    <div class="h4 date">Feb 22, 2015</div>
+                    <p class="text-muted">No incidents reported today.</p>
+                </div>
+                <div class="status-day no-incidents">
+                    <div class="h4 date">Feb 21, 2015</div>
+                    <p class="text-muted">No incidents reported today.</p>
+                </div>
+                <div class="status-day no-incidents">
+                    <div class="h4 date">Feb 20, 2015</div>
+                    <div class="incident-container">
+                      <div class="h5 incident-title impact-minor">
+                        <a href="/incidents/dsdcx050x53z">JavaScript issues on Web Application</a>
+                      </div>
+
+                        <div class="updates-container">
+                            <div class="update font-regular resolved">
+                                <strong>Resolved</strong> -
+                                The issue causing JavaScript errors has been resolved and the application should be operating normally. We will continue to monitor the situation.
+                              <br>
+                              <small>
+                                  Feb 10, 16:56 PST
+                              </small>
+                            </div>
+                            <div class="update font-regular identified">
+                                <strong>Identified</strong> -
+                                A recent deploy has caused JavaScript errors to occur on the site. We are working to resolve this as quickly as possible.
+                              <br>
+                              <small>
+                                  Feb 10, 16:34 PST
+                              </small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="status-day no-incidents">
+                    <div class="h4 date">Feb 19, 2015</div>
+                    <p class="text-muted">No incidents reported today.</p>
+                </div>
+                <div class="status-day no-incidents">
+                    <div class="h4 date">Feb 18, 2015</div>
+                    <p class="text-muted">No incidents reported today.</p>
+                </div>
+                <div class="status-day no-incidents">
+                    <div class="h4 date">Feb 17, 2015</div>
+                    <p class="text-muted">No incidents reported today.</p>
                 </div>
             </div>
         </div>

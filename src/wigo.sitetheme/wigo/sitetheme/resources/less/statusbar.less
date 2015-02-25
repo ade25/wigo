@@ -11,6 +11,10 @@
 .app-status {
   .container();
   border-bottom: 1px solid @cu-black;
+  @media (min-width: @screen-sm-min) {
+    padding-top: @navbar-height;
+    padding-bottom: @navbar-height;
+  }
 }
 
 // Make grid row
@@ -37,6 +41,19 @@
   .make-md-column(4);
   text-align: center;
   @media (min-width: @screen-sm-min) {
+    padding-top: @line-height-computed;
     text-align: right;
   }
+}
+
+// Actions
+.sq-action {
+  .btn();
+  .btn-default();
+  margin-bottom: floor((@line-height-computed / 2));
+}
+
+.sqa-status-timestamp {
+  font-size: 0.8rem;
+  font-weight: 300;
 }

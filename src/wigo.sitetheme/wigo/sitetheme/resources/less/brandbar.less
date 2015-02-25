@@ -8,10 +8,31 @@
   background: @cu-black;
 }
 
-.app-brand {
+
+//== Brand layout
+//
+//## 2 column grid with wrapper container
+.app-brandbar-content {
   .container();
 }
 
+// Grid row
+.app-brand {
+  .make-row()
+}
+
+// Grid columns 2:1
+.app-brand-main {
+  .make-md-column(8);
+}
+
+.app-brand-aside {
+  .make-md-column(4);
+}
+
+
+//== Brand theme
+//
 .app-brandname {
   font-size: 3rem;
   font-weight: 400;
