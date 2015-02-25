@@ -9,7 +9,7 @@
          tiles editiong overlays -->
     <!--<theme href="minimal.html" if-path="@@edit-tile" />-->
 
-    <theme href="dist/statuspage/index.html" css:if-content="body.template-status-quo" />
+    <theme href="dist/index.html" css:if-content="body.template-status-quo" />
     <theme href="dist/signin/index.html" css:if-content="body.template-login_form" />
     <theme href="dist/signin/index.html" css:if-content="body.template-logged_out" />
     <theme href="dist/signin/index.html" css:if-content="body.template-login_failed" />
@@ -79,13 +79,42 @@
         <!--<copy attributes="action" css:content="#portal-searchbox form"
             css:theme="#portal-searchbox" />-->
 
-        <!-- Global navigation -->
-        <replace css:content="#portal-globalnav li"
-            css:theme-children="#main-nav" />
-
-        <!-- Breadcrumbs -->
-        <replace css:content-children='#portal-breadcrumbs'
-            css:theme-children='#breadcrumbs' />
+        <!-- Document First Heading -->
+            <replace css:content=".documentFirstHeading">
+                <div class="app-page-header">
+                    <h1 class="app-page-title">
+                        <xsl:apply-templates />
+                    </h1>
+                </div>
+            </replace>
+            <!-- Document lead description -->
+            <replace css:content=".documentDescription">
+                <p class="app-page-abstract">
+                    <xsl:apply-templates />
+                </p>
+            </replace>
+            <!-- Fix table styles -->
+            <replace css:content="table.listing">
+              <table>
+                <xsl:copy-of select="@*"/>
+                <xsl:attribute name="class">table table-hover</xsl:attribute>
+                <xsl:apply-templates />
+              </table>
+            </replace>
+            <!-- Listing bar pagination -->
+            <replace css:content=".listingBar">
+              <div>
+                <xsl:copy-of select="@*" />
+                <xsl:attribute name="class"><xsl:value-of select="./@class" /> pagination</xsl:attribute>
+                <ul class="pagination">
+                  <xsl:for-each select="./*">
+                    <li>
+                      <xsl:apply-templates select="." />
+                    </li>
+                  </xsl:for-each>
+                </ul>
+              </div>
+            </replace>
 
         <!-- Login form rules -->
         <replace css:content-children="#content-core"
